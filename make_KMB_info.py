@@ -202,7 +202,17 @@ class KMBInfo(MakeBaseInfo):
     @classmethod
     def main(cls, *args):
         """Command line entry-point."""
-        super(KMBInfo, cls).main(*args)
+        usage = (
+            'Usage:'
+            '\tpython make_info.py -in_file:PATH -dir:PATH\n'
+            '\t-in_file:PATH path to metadata file\n'
+            '\t-dir:PATH specifies the path to the directory containing a '
+            'user_config.py file (optional)\n'
+            '\tExample:\n'
+            '\tpython make_KMB_info.py -in_file:KMB/kmb_data.json '
+            '-base_name:kmb_output -dir:KMB\n'
+        )
+        super(KMBInfo, cls).main(usage=usage, *args)
 
 
 class KMBItem(object):
