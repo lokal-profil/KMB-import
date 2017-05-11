@@ -17,7 +17,7 @@ def parser(dom, A):
 
     This is all legacy code from RAA-tools
     """
-    A['problem'] = None
+    A['problem'] = []
     # tags to get
     tagDict = {'namn': ('ns5:itemLabel', None),            # namn
                'beskrivning': ('pres:description', None),  # med ord
@@ -63,7 +63,7 @@ def parser(dom, A):
             A['latitude'] = coords[1][:8]
             A['longitude'] = coords[0][:8]
         else:
-            A['problem'] = 'Complain to Lokal_Profil: coord was not a point : %s' % A['ID']
+            A['problem'].append("Coord was not a point: '{0}'".format(cs))
     # do visualizes separately need not be shm/fmi/bbr etc. can be multiple
     A['bbr'] = A['fmis'] = False
     xmlTag = dom.getElementsByTagName('ns5:visualizes')
@@ -169,34 +169,58 @@ def process_byline(entry):
         entry['byline'] = helpers.flip_name(entry['byline'])
 
 
-# @todo: update this per new copyright rules - T164568
 def process_license(entry):
     """
-    Identify the license and store back in entry.
+    Identify the license, as wikitext, and store as new property.
+
+    Must be called after process_byline().
+    Possible licenses are listed in
+    http://kulturarvsdata.se/resurser/license/license.owl
 
     Don't include name/byline if unknown.
     """
+    entry['copyright'] = entry['copyright'].strip()
+    template = None
+    byline = None
+    license_text = None
+
     if entry['license']:
         trim = 'http://kulturarvsdata.se/resurser/License#'
         entry['license'] = entry['license'].strip()[len(trim):]
-    # if not copyright = RAÄ and if license='' then, this is probably unfree
+
+    # determine template
     if (entry['license'] == 'pdmark') or \
-            (entry['copyright'].strip() == 'Utgången upphovsrätt'):
-        entry['license'] = '{{PD-Sweden-photo}}'
-    elif (entry['license'] == 'by') or (entry['copyright'].strip() == 'RAÄ'):
-        # consider changing this to AND since there might be a cc-by image which isn't from RAA.
-        # Alternatively have another if inside which checks whethere copyright = RAA
-        param = '}}'
-        if (entry['byline'] == '{{unknown}}') or \
-                (entry['byline'] == '{{not provided}}'):
-            pass
+            (entry['copyright'] == 'Utgången upphovsrätt'):
+        template = 'PD-Sweden-photo'
+    elif entry['license'] == 'by':
+        template = 'CC-BY-2.5'
+    elif entry['license'] == 'by-sa':
+        template = 'CC-BY-SA-2.5'
+    elif entry['license'] == 'cc0':
+        template = 'CC0'
+
+    # determine byline if possible
+    if template in ('CC-BY-2.5', 'CC-BY-SA-2.5'):
+        byline = []
+        if entry['byline'] not in ('{{unknown}}', '{{not provided}}'):
+            byline.append(entry['byline'])
+
+        if entry['copyright'] == 'RAÄ':
+            byline.append('Riksantikvarieämbetet')
+        elif entry['copyright']:
+            byline.append(entry['copyright'])
+
+    if template:
+        if byline:
+            license_text = '{{%s|%s}}' % (template, ' / '.join(byline))
         else:
-            param = '|%s}}' % entry['byline']
-        entry['license'] = '{{CC-BY-RAÄ%s' % param
+            license_text = '{{%s}}' % template
     else:
-        entry['problem'] = (
-            'Det verkar tyvärr som om licensen inte är fri. Copyright="%s", License="%s".<br/>'
-            '<small>Om informationen ovan är inkorrekt så informera gärna Lokal_Profil.</small>' % (entry['copyright'], entry['license']))
+        entry['problem'].append(
+            "It looks like the license isn't free. "
+            "Copyright='{0}', License='{1}'.".format(
+                entry['copyright'], entry['license']))
+    entry['license_text'] = license_text
 
 
 def kmb_wrapper(idno):

@@ -54,7 +54,7 @@ class KMBInfo(MakeBaseInfo):
             if item.problem:
                 pywikibot.output(
                     'The {0} image was skipped because of: {1}'.format(
-                        item.ID, item.problem))
+                        item.ID, '\n'.join(item.problem)))
             else:
                 d[key] = item
 
@@ -106,7 +106,7 @@ class KMBInfo(MakeBaseInfo):
         template_data['photographer'] = self.get_photographer(item)
         template_data['depicted place'] = item.get_depicted_place()
         template_data['date'] = item.date
-        template_data['permission'] = item.license
+        template_data['permission'] = item.license_text
         template_data['ID'] = item.ID
         template_data['bildbeteckning'] = item.bildbeteckning
         template_data['source'] = item.get_source()
