@@ -8,13 +8,17 @@ BatchUploadTools compliant json file.
 """
 from __future__ import unicode_literals
 from collections import OrderedDict
+import os.path
 
 import pywikibot
+from pywikibot.data import sparql
+
 import batchupload.helpers as helpers
 import batchupload.common as common
 from batchupload.make_info import MakeBaseInfo
 
 
+MAPPINGS_DIR = 'mappings'
 BATCH_CAT = 'Media contributed by RAÄ'  # stem for maintenance categories
 BATCH_DATE = '2017-05'  # branch for this particular batch upload
 
@@ -61,19 +65,49 @@ class KMBInfo(MakeBaseInfo):
         self.data = d
 
     # @todo: break out substed lists as mappings - T164567
-    def load_mappings(self, update=True):
+    def load_mappings(self, update_mappings):
         """
         Update mapping files, load these and package appropriately.
 
-        :param update: whether to first download the latest mappings
+        :param update_mappings: whether to first download the latest mappings
         """
-        # Currently these are handled as substed templates.
-        # redo as either:
-        # * offline mappings: If so consider re-jiging make_info to not assume
-        #   it is alway an online table.
-        # * online tables: If so consider re-jiging make_info to not assume
-        #   these need alway be dumped a offline files first.
-        pass
+        socken_file = os.path.join(MAPPINGS_DIR, 'socken.json')
+        kommun_file = os.path.join(MAPPINGS_DIR, 'kommun.json')
+
+        if update_mappings:
+            self.mappings['socken'] = KMBInfo.query_to_lookup(
+                'SELECT ?item ?value WHERE {?item wdt:P777 ?value}')
+            self.mappings['kommun'] = KMBInfo.query_to_lookup(
+                'SELECT ?item ?value WHERE {?item wdt:P525 ?value}')
+            # dump to mappings
+            common.open_and_write_file(
+                socken_file, self.mappings['socken'], as_json=True)
+            common.open_and_write_file(
+                kommun_file, self.mappings['kommun'], as_json=True)
+        else:
+            self.mappings['socken'] = common.open_and_read_file(
+                socken_file, as_json=True)
+            self.mappings['kommun'] = common.open_and_read_file(
+                kommun_file, as_json=True)
+
+    # @todo: don't we want any other values?
+    @staticmethod
+    def query_to_lookup(query, item_label='item', value_label='value'):
+        """
+        Fetch sparql result and return it as a lookup table for wikidata id.
+
+        :param item_label: the label of the selected wikidata id
+        :param value_label: the label of the selected lookup key
+        :return: dict
+        """
+        wdqs = sparql.SparqlQuery()
+        result = wdqs.select(query, full_data=True)
+        lookup = {}
+        for entry in result:
+            if entry[value_label] in lookup:
+                raise pywikibot.Error('Non-unique value in lookup')
+            lookup[str(entry[value_label])] = entry[item_label].getID()
+        return lookup
 
     # @note: this differs from the one created in RAA-tools
     def generate_filename(self, item):
@@ -104,7 +138,8 @@ class KMBInfo(MakeBaseInfo):
         template_data['original description'] = item.beskrivning
         template_data['wiki description'] = item.get_wiki_description()
         template_data['photographer'] = self.get_photographer(item)
-        template_data['depicted place'] = item.get_depicted_place()
+        template_data['depicted place'] = item.get_depicted_place(
+            self.mappings)
         template_data['date'] = item.date
         template_data['permission'] = item.license_text
         template_data['ID'] = item.ID
@@ -154,22 +189,21 @@ class KMBInfo(MakeBaseInfo):
         :param item: the KMBItem to analyse
         :return: list of categories (without "Category:" prefix)
         """
-        cats = []
+        cats = item.content_cats
 
         # depicted
         if item.fmis:
-            cats.append('Archaeological monuments in %s' % item.landskap)
-            cats.append('Archaeological monuments in %s County' % item.lan)
+            cats.add('Archaeological monuments in %s' % item.landskap)
+            cats.add('Archaeological monuments in %s County' % item.lan)
         if item.bbr:
-            cats.append('Listed buildings in Sweden')
+            cats.add('Listed buildings in Sweden')
 
         # must be better to do this via safesubst
         for tagg in item.tagg:
             # @todo: '{{safesubst:User:Lokal_Profil/nycklar/cats|%s|%s|%s}}' % (tagg, item.land.upper(), item.landskap)
             pass
 
-        cats = list(set(cats))  # remove any duplicates
-        return cats
+        return list(cats)
 
     # @todo: Implement creator from mapping - T164567
     def generate_meta_cats(self, item, content_cats):
@@ -181,24 +215,23 @@ class KMBInfo(MakeBaseInfo):
         :return: list of categories (without "Category:" prefix)
         """
         pass
-        cats = []
+        cats = item.meta_cats
 
         # base cats
         # "Images from the Swedish National Heritage Board" already added by
         # Kulturmiljöbild-image template
-        cats.append(self.batch_cat)
+        cats.add(self.batch_cat)
 
         # problem cats
         if not content_cats:
-            cats.append(self.make_maintenance_cat('improve categories'))
+            cats.add(self.make_maintenance_cat('needing categorisation'))
         # if not item.get_description():
         #     cats.append(self.make_maintenance_cat('add description'))
 
         # creator cats are classified as meta
         # @todo: '{{safesubst:User:Lokal_Profil/nycklar/creators|%s|c}} % item.byline
 
-        cats = list(set(cats))  # remove any duplicates
-        return cats
+        return list(cats)
 
     @classmethod
     def main(cls, *args):
@@ -225,7 +258,7 @@ class KMBItem(object):
 
         :param initial_data: dict of data to set up item with
         """
-        # ensure all required varaibles are present
+        # ensure all required variables are present
         required_entries = ('latitude', 'longitude', 'avbildar')
         for entry in required_entries:
             if entry not in initial_data:
@@ -233,6 +266,10 @@ class KMBItem(object):
 
         for key, value in initial_data.iteritems():
             setattr(self, key, value)
+
+        self.wd = {}  # store for relevant Wikidata identifiers
+        self.content_cats = set()  # content relevant categories without prefix
+        self.meta_cats = set()  # meta/maintenance proto categories
 
     def get_wiki_description(self):
         """
@@ -274,26 +311,42 @@ class KMBItem(object):
         return '[{url} {link_text}]\n{template}'.format(
             url=self.source, link_text=txt, template=template)
 
-    # @todo: use kommunkod/sockenkod to go via wikidata - T164576
-    def get_depicted_place(self):
-        """Get a linked version of the depicted place."""
-        s_triggers = ('a', 'o', 'u', 'å', 'e', 'i', 'y', 'ä', 'ö', 's', 'x')
+    def get_depicted_place(self, mappings):
+        """
+        Get a linked version of the depicted place.
+
+        If no 'land' is given the image is assumed to depict Sweden.
+
+        :param mappings: the shared mapping object
+        :return: depicted_place as wikitext
+        """
         depicted_place = None
         if not self.land or self.land == 'se':
-            kommun_link = self.kommunName
-            # add s if kommun does not end in s or a vowel
-            if not any(self.kommunName.endswith(x) for x in s_triggers):
-                kommun_link += 's'
-            kommun_link += ' kommun'
-            depicted_place = '{{Country|1=SE}}, %s, [[:sv:%s|%s]]' % (
-                self.lan, kommun_link, self.kommunName)
+            if 'Gotland' in (self.lan, self.landskap) and not self.kommun:
+                # since lan/landskap/kommun are equivalent in this case
+                self.kommun = '0980'  # Gotlands kommun
 
-            if self.socken:
-                template = 'User:Lokal_Profil/nycklar/socknar'
-                depicted_place += ', [[:sv:{{safesubst:%s|%s}}|%s (%s)]]' % (
-                    template, self.socken, self.sockenName, self.landskap)
+            depicted_place = '{{Country|1=SE}}'
+            if self.kommun:
+                kommun_id = '{:04d}'.format(int(self.kommun))  # zero pad
+                self.wd['kommun'] = mappings['kommun'][kommun_id]
+                depicted_place += ', {{city|%s}}' % self.wd['kommun']
+
+                if self.socken:
+                    socken_id = '{:04d}'.format(int(self.socken))  # zero pad
+                    self.wd['socken'] = mappings['socken'][socken_id]
+                    depicted_place += ', {{city|%s}}' % self.wd['socken']
+            else:
+                if self.lan:
+                    depicted_place += ', %s' % self.lan
+                elif self.landskap:
+                    depicted_place += ', %s' % self.landskap
+                else:
+                    self.meta_cats.add(
+                        'needing categorisation (no municipality)')
         else:
             depicted_place = '{{Country|1=%s}}' % self.land.upper()
+            self.meta_cats.add('needing categorisation (not from Sweden)')
 
         return depicted_place
 
