@@ -74,22 +74,22 @@ def parser(dom, A):
     # and an attempt at determining categories
     xmlTag = dom.getElementsByTagName('ns5:itemClassName')
     if not len(xmlTag) == 0:
-        A['tagg'] = []
+        A['tag'] = []
         for x in xmlTag:
             try:
-                A['tagg'].append(x.childNodes[0].data.strip())
+                A['tag'].append(x.childNodes[0].data.strip())
             except IndexError:
                 # Means data for this field was mising
                 print "Empty 'ns5:itemClassName' in %s" % A['ID']
     else:
-        A['tagg'] = []
+        A['tag'] = []
     xmlTag = dom.getElementsByTagName('ns5:itemKeyWord')
     if not len(xmlTag) == 0:
-        if len(A['tagg']) == 0:
-            A['tagg'] = []
+        if len(A['tag']) == 0:
+            A['tag'] = []
         for x in xmlTag:
             try:
-                A['tagg'].append(x.childNodes[0].data.strip())
+                A['tag'].append(x.childNodes[0].data.strip())
             except IndexError:
                 # Means data for this field was mising
                 print "Empty 'ns5:itemKeyWord' in %s" % A['ID']
@@ -160,7 +160,7 @@ def process_date(entry):
 
 def process_byline(entry):
     """Handle unknown entries and rearrange names."""
-    if entry['byline'] in ('Okänd, Okänd', 'Okänd'):
+    if 'okänd' in entry['byline'].lower():
         entry['byline'] = '{{unknown}}'
     elif not entry['byline']:
         entry['byline'] = '{{not provided}}'

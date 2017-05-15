@@ -1,0 +1,1008 @@
+{
+    "@meta": "Extracted from https://commons.wikimedia.org/w/index.php?title=Institution:Riksantikvarie%C3%A4mbetet/KMB/tags&oldid=243513409",
+    "Metallframställning och bergsbruk": {
+        "default": "Metalwork",
+        "base": "Metalwork in {}",
+        "SE": "Metalwork in Sweden"
+    },
+    "Fångstgrop": {
+        "default": "Pitfall traps",
+        "base": "Pitfall traps in {}",
+        "SE": "Pitfall traps in Sweden"
+    },
+    "Hyttområde": {
+        "default": "Foundries",
+        "base": "Foundries in {}",
+        "SE": "Foundries in Sweden"
+    },
+    "Måleri": {
+        "default": "Painting",
+        "base": null,
+        "SE": null
+    },
+    "Park": {
+        "default": "Parks to be categorised by country",
+        "base": "Parks in {}",
+        "SE": "Parks in Sweden"
+    },
+    "Plats med tradition": {
+        "default": "Traditions",
+        "base": "Traditions of {}",
+        "SE": "Traditions of Sweden"
+    },
+    "Bryggeri": {
+        "default": "Breweries",
+        "base": "Breweries in {}",
+        "SE": "Breweries in Sweden"
+    },
+    "Småindustriområde": {
+        "default": "Industrial parks",
+        "base": "Industrial parks in {}",
+        "SE": "Industrial parks in Sweden"
+    },
+    "Vägmärke": {
+        "default": "Road signs in unidentified locations",
+        "base": "Road signs in {}",
+        "SE": "Road signs in Sweden"
+    },
+    "Odlingslandskap": {
+        "default": "Fields",
+        "base": "Fields in {}",
+        "SE": "Fields in Sweden"
+    },
+    "Fornminnen": {
+        "default": "Archaeological monuments",
+        "base": "Archaeological monuments in {}",
+        "SE": "Archaeological monuments in Sweden"
+    },
+    "Stenkammargrav": {
+        "default": "Megalithic graves",
+        "base": "Megalithic graves in {}",
+        "SE": "Megalithic graves in Sweden"
+    },
+    "Kloster": {
+        "default": "Monasteries to be categorised by country",
+        "base": "Monasteries in {}",
+        "SE": "Monasteries in Sweden"
+    },
+    "Hälso-, sjuk- och socialvård": {
+        "default": "Health care",
+        "base": "Health care in {}",
+        "SE": "Health care in Sweden"
+    },
+    "Hyttlämning": {
+        "default": "Foundries",
+        "base": "Foundries in {}",
+        "SE": "Foundries in Sweden"
+    },
+    "Kvällsmotiv": {
+        "default": "Evening",
+        "base": "Evening in {}",
+        "SE": "Evening in Sweden"
+    },
+    "(05) Altarprydnader, detaljer": {
+        "default": "Altars",
+        "base": "Altars in {}",
+        "SE": "Altars in Sweden"
+    },
+    "Tullhus/tullstation": {
+        "default": "Toll houses",
+        "base": null,
+        "SE": null
+    },
+    "Stål- och metallverk": {
+        "default": "Steel industry",
+        "base": "Steel industry in {}",
+        "SE": "Steel industry in Sweden"
+    },
+    "Religionsutövning": {
+        "default": "Religion to be categorised by country",
+        "base": "Religion in {}",
+        "SE": "Religion in Sweden"
+    },
+    "Naturreservat": {
+        "default": "Nature reserves",
+        "base": "Nature reserves in {}",
+        "SE": "Nature reserves in Sweden"
+    },
+    "Fyrplats": {
+        "default": "Lighthouses to be categorised by country",
+        "base": "Lighthouses in {}",
+        "SE": "Lighthouses in Sweden"
+    },
+    "Skogslandskap": {
+        "default": "Forests to be categorised by country",
+        "base": "Forests in {}",
+        "SE": "Forests in Sweden"
+    },
+    "Gravklot": {
+        "default": "Grave orbs",
+        "base": "Grave orbs in {}",
+        "SE": "Grave orbs in Sweden"
+    },
+    "(03) Kalkmålningar": {
+        "default": "Church paintings",
+        "base": "Church paintings in {}",
+        "SE": "Church paintings in Sweden"
+    },
+    "Hytta": {
+        "default": "Foundries",
+        "base": "Foundries in {}",
+        "SE": "Foundries in Sweden"
+    },
+    "Kommunikationsväsen": {
+        "default": "Communication",
+        "base": "Communication in {}",
+        "SE": "Communication in Sweden"
+    },
+    "Jordbruksegnahem": {
+        "default": "Farms",
+        "base": "Farms in {}",
+        "SE": "Farms in Sweden"
+    },
+    "Herrgård": {
+        "default": "Mansions",
+        "base": "Mansions in {}",
+        "SE": "Mansions in Sweden"
+    },
+    "Akvarell": {
+        "default": "Watercolor paintings",
+        "base": "Watercolor paintings in {}",
+        "SE": "Watercolor paintings in Sweden"
+    },
+    "(01) Exteriörer": {
+        "default": "Church exteriors",
+        "base": "Church exteriors in {}",
+        "SE": "Church exteriors in Sweden"
+    },
+    "Botanisk trädgård": {
+        "default": "Botanical gardens",
+        "base": "Botanical gardens in {}",
+        "SE": "Botanical gardens in Sweden"
+    },
+    "Varv": {
+        "default": "Shipyards",
+        "base": "Shipyards in {}",
+        "SE": "Shipyards in Sweden"
+    },
+    "Nomadnäring": {
+        "default": "Nomads",
+        "base": null,
+        "SE": null
+    },
+    "Byggnadsminnen:Statl": {
+        "default": null,
+        "base": "Listed buildings in {}",
+        "SE": "Listed buildings in Sweden"
+    },
+    "Järnvägsstation": {
+        "default": "Train stations to be categorised by country",
+        "base": "Train stations in {}",
+        "SE": "Train stations in Sweden"
+    },
+    "Bostadsområde": {
+        "default": "Residential areas",
+        "base": "Residential areas in {}",
+        "SE": "Residential areas in Sweden"
+    },
+    "Byggnadsverk": {
+        "default": "Buildings",
+        "base": "Buildings in {}",
+        "SE": "Buildings in Sweden"
+    },
+    "Växter": {
+        "default": "Flora to be categorised by country",
+        "base": "Flora of {}",
+        "SE": "Flora of Sweden"
+    },
+    "Ritning": {
+        "default": "Architectural drawings",
+        "base": "Architectural drawings from {}",
+        "SE": "Architectural drawings from Sweden"
+    },
+    "(03) Målningar på trä": {
+        "default": "Paintings on wood",
+        "base": "Church paintings in {}",
+        "SE": "Church paintings in Sweden"
+    },
+    "Vägar": {
+        "default": "Roads to be categorised by country",
+        "base": "Roads in {}",
+        "SE": "Roads in Sweden"
+    },
+    "Hög": {
+        "default": "Tumuli",
+        "base": "Tumuli in {}",
+        "SE": "Tumuli in Sweden"
+    },
+    "Litografi": {
+        "default": "Lithographs",
+        "base": null,
+        "SE": null
+    },
+    "Besökare": {
+        "default": "Visitors",
+        "base": null,
+        "SE": null
+    },
+    "Skans": {
+        "default": "Sconce (fortification)",
+        "base": "Sconces in {}",
+        "SE": "Sconces in Sweden"
+    },
+    "Riksintressen": {
+        "default": null,
+        "base": "Area of national interest for cultural heritage in {}",
+        "SE": "Area of national interest for cultural heritage in Sweden"
+    },
+    "Byggnad annan": {
+        "default": "Buildings to be categorised by country",
+        "base": "Buildings in {}",
+        "SE": "Buildings in Sweden"
+    },
+    "Palats / stadsvilla": {
+        "default": "Palaces",
+        "base": "Palaces in {}",
+        "SE": "Palaces in Sweden"
+    },
+    "Kvarn": {
+        "default": "Mills",
+        "base": "Mills in {}",
+        "SE": "Mills in Sweden"
+    },
+    "Boplats": {
+        "default": "Prehistoric settlements",
+        "base": "Prehistoric settlements in {}",
+        "SE": "Prehistoric settlements in Sweden"
+    },
+    "Aquatint": {
+        "default": "Aquatint",
+        "base": null,
+        "SE": null
+    },
+    "Stadsvall/stadsmur": {
+        "default": "City walls",
+        "base": "City walls in {}",
+        "SE": "City walls in Sweden"
+    },
+    "Museum": {
+        "default": "Museums to be categorised",
+        "base": "Museums in {}",
+        "SE": "Museums in Sweden"
+    },
+    "Hägnad": {
+        "default": "Enclosures",
+        "base": null,
+        "SE": null
+    },
+    "Rekreation och turism": {
+        "default": "Tourism to be categorised by country",
+        "base": "Tourism in {}",
+        "SE": "Tourism in Sweden"
+    },
+    "Flygbilder": {
+        "default": "Aerial photographs",
+        "base": "Aerial photographs of {}",
+        "SE": "Aerial photographs of Sweden"
+    },
+    "Industriminnen": {
+        "default": "Industrial heritage",
+        "base": "Industrial heritage in {}",
+        "SE": "Industrial heritage in Sweden"
+    },
+    "Bostadsbebyggelse": {
+        "default": "Residential buildings",
+        "base": "Residential buildings in {}",
+        "SE": "Residential buildings in Sweden"
+    },
+    "Bondgård": {
+        "default": "Farms",
+        "base": "Farms in {}",
+        "SE": "Farms in Sweden"
+    },
+    "Personer": {
+        "default": "Unidentified people",
+        "base": "People of {}",
+        "SE": "People of Sweden"
+    },
+    "Arkeologiskt material": {
+        "default": "Archaeological objects",
+        "base": "Archaeological finds from {}",
+        "SE": "Archaeological finds from Sweden"
+    },
+    "Hembygdsgård": {
+        "default": null,
+        "base": "Local Heritage Centres in {}",
+        "SE": "Local Heritage Centres in Sweden"
+    },
+    "Husgrund": {
+        "default": "Shallow foundations",
+        "base": null,
+        "SE": null
+    },
+    "Stenindustri": {
+        "default": "Quarries",
+        "base": "Quarries in {}",
+        "SE": "Quarries in Sweden"
+    },
+    "Fjällbygd": {
+        "default": "Mountains to be categorised by country",
+        "base": "Mountains of {}",
+        "SE": "Mountains of Sweden"
+    },
+    "Hamnmiljöer": {
+        "default": "Ports and harbours (unidentified)",
+        "base": "Ports and harbours in {}",
+        "SE": "Ports and harbours in Sweden"
+    },
+    "Kultur och nöjesliv": {
+        "default": "Entertainment",
+        "base": "Entertainment in {}",
+        "SE": "Entertainment in Sweden"
+    },
+    "Religionsutövning - kyrkor": {
+        "default": "Churches to be categorised by country",
+        "base": "Churches in {}",
+        "SE": "Churches in Sweden"
+    },
+    "Säteri": {
+        "default": "Manors",
+        "base": "Manors in {}",
+        "SE": "Manors in Sweden"
+    },
+    "Måleri - ej arkitekturbunden": {
+        "default": "Paintings to be categorised by country",
+        "base": "Paintings in {}",
+        "SE": "Paintings in Sweden"
+    },
+    "Insjömiljöer": {
+        "default": "Lakes to be categorised by country",
+        "base": "Lakes of {}",
+        "SE": "Lakes of Sweden"
+    },
+    "Härd": {
+        "default": "Hearths",
+        "base": null,
+        "SE": null
+    },
+    "kanal": {
+        "default": "Canals",
+        "base": "Canals in {}",
+        "SE": "Canals in Sweden"
+    },
+    "Slättbygd": {
+        "default": "Plains",
+        "base": null,
+        "SE": null
+    },
+    "Arkeologisk undersökning": {
+        "default": "Excavations",
+        "base": "Excavations in {}",
+        "SE": "Excavations in Sweden"
+    },
+    "Skulpturer": {
+        "default": "Sculptures to be categorised by country",
+        "base": "Sculptures in {}",
+        "SE": "Sculptures in Sweden"
+    },
+    "Grav- och boplatsområde": {
+        "default": "Prehistoric settlements",
+        "base": "Prehistoric settlements in {}",
+        "SE": "Prehistoric settlements in Sweden"
+    },
+    "Kopparstick": {
+        "default": "Copper engravings",
+        "base": null,
+        "SE": null
+    },
+    "Kanalanläggning": {
+        "default": "Canal structures",
+        "base": "Canals in {}",
+        "SE": "Canals in Sweden"
+    },
+    "Etsning": {
+        "default": "Engravings",
+        "base": "Engravings from {}",
+        "SE": "Engravings from Sweden"
+    },
+    "Befästning": {
+        "default": "Fortresses to be categorised by country",
+        "base": "Fortresses in {}",
+        "SE": "Fortresses in Sweden"
+    },
+    "Färdväg": {
+        "default": "Roads to be categorised by country",
+        "base": "Roads in {}",
+        "SE": "Roads in Sweden"
+    },
+    "Saluhall": {
+        "default": "Market halls",
+        "base": "Market halls in {}",
+        "SE": "Market halls in Sweden"
+    },
+    "(07) Textilier": {
+        "default": "Textiles",
+        "base": "Textiles of {}",
+        "SE": "Textiles of Sweden"
+    },
+    "Runor": {
+        "default": "Runic writing",
+        "base": null,
+        "SE": null
+    },
+    "Hantverk och manufaktur": {
+        "default": "Crafts",
+        "base": "Crafts of {}",
+        "SE": "Crafts of Sweden"
+    },
+    "Slussanläggning": {
+        "default": "Canal locks",
+        "base": "Canal locks in {}",
+        "SE": "Canal locks in Sweden"
+    },
+    "Samlingsplats": {
+        "default": "Meeting points",
+        "base": null,
+        "SE": null
+    },
+    "Hamnområde": {
+        "default": "Ports and harbours",
+        "base": "Ports and harbours in {}",
+        "SE": "Ports and harbours in Sweden"
+    },
+    "Begravningsplats": {
+        "default": "Burial grounds",
+        "base": "Burial grounds in {}",
+        "SE": "Burial grounds in Sweden"
+    },
+    "Torgmiljö": {
+        "default": "Squares to be categorised by country",
+        "base": "Squares in {}",
+        "SE": "Squares in Sweden"
+    },
+    "Jordbruk": {
+        "default": "Agriculture",
+        "base": "Agriculture in {}",
+        "SE": "Agriculture in Sweden"
+    },
+    "Handel och bankväsen": {
+        "default": "Economics",
+        "base": "Economy of {}",
+        "SE": "Economy of Sweden"
+    },
+    "Röse": {
+        "default": "Cairns (rock stack landmarks)",
+        "base": "Cairns in {}",
+        "SE": "Cairns in Sweden"
+    },
+    "Hälsobrunn": {
+        "default": "Spas",
+        "base": "Spas in {}",
+        "SE": "Spas in Sweden"
+    },
+    "Stensträngar": {
+        "default": null,
+        "base": "Stone strings in {}",
+        "SE": "Stone strings in Sweden"
+    },
+    "Förortsmiljö": {
+        "default": "Suburbs",
+        "base": "Urban areas in {}",
+        "SE": "Urban areas in Sweden"
+    },
+    "Kronomagasin": {
+        "default": "Warehouses",
+        "base": "Warehouses in {}",
+        "SE": "Warehouses in Sweden"
+    },
+    "Skogsbygd": {
+        "default": "Forests to be categorised by country",
+        "base": "Forests in {}",
+        "SE": "Forests in Sweden"
+    },
+    "Gruva": {
+        "default": "Mines",
+        "base": "Mines in {}",
+        "SE": "Mines in Sweden"
+    },
+    "Källa med tradition": {
+        "default": "Holy wells",
+        "base": "Holy wells in {}",
+        "SE": "Holy wells in Sweden"
+    },
+    "Runristning/runsten": {
+        "default": "Runestones",
+        "base": "Runestones of {}",
+        "SE": "Runestones of Sweden"
+    },
+    "Våghus": {
+        "default": "Weigh houses",
+        "base": "Weigh houses in {}",
+        "SE": "Weigh houses in Sweden"
+    },
+    "Historisk miljö": {
+        "default": "Historic sites",
+        "base": null,
+        "SE": null
+    },
+    "Teater": {
+        "default": "Theaters to be categorised by country",
+        "base": "Theaters in {}",
+        "SE": "Theaters in Sweden"
+    },
+    "Fyr": {
+        "default": "Lighthouses to be categorised by country",
+        "base": "Lighthouses in {}",
+        "SE": "Lighthouses in Sweden"
+    },
+    "Kyrka/kapell": {
+        "default": "Churches to be categorised by country",
+        "base": "Churches in {}",
+        "SE": "Churches in Sweden"
+    },
+    "Arbetsmotiv": {
+        "default": "Work",
+        "base": null,
+        "SE": null
+    },
+    "Kraftverk": {
+        "default": "Power plants",
+        "base": "Power plants in {}",
+        "SE": "Power plants in Sweden"
+    },
+    "Rådhus": {
+        "default": "Town halls",
+        "base": "Town halls in {}",
+        "SE": "Town halls in Sweden"
+    },
+    "Ristningar, hällmålningar och minnesmärken": {
+        "default": "Petroglyphs",
+        "base": "Petroglyphs in {}",
+        "SE": "Petroglyphs in Sweden"
+    },
+    "Lavering": {
+        "default": "Ink and wash paintings",
+        "base": null,
+        "SE": null
+    },
+    "Åkermark": {
+        "default": "Fields",
+        "base": "Fields in {}",
+        "SE": "Fields in Sweden"
+    },
+    "Kust- och skärgårdsmiljö": {
+        "default": "Coastal landforms",
+        "base": "Coastal landforms in {}",
+        "SE": "Coastal landforms in Sweden"
+    },
+    "Avrättningsplats": {
+        "default": "Execution sites",
+        "base": "Execution sites in {}",
+        "SE": "Execution sites in Sweden"
+    },
+    "Hällmålning": {
+        "default": "Pictographs",
+        "base": "Pictographs in {}",
+        "SE": "Pictographs in Sweden"
+    },
+    "Jakt och fångst": {
+        "default": "Hunting",
+        "base": "Hunting in {}",
+        "SE": "Hunting in Sweden"
+    },
+    "Arbetsliv": {
+        "default": "People at work",
+        "base": "People at work in {}",
+        "SE": "People at work in Sweden"
+    },
+    "Grav markerad av rest sten/block": {
+        "default": null,
+        "base": "Prehistoric graves marked by stone or boulder in {}",
+        "SE": "Prehistoric graves marked by stone or boulder in Sweden"
+    },
+    "Bebyggelselämningar": {
+        "default": "Ruins",
+        "base": "Ruins in {}",
+        "SE": "Ruins in Sweden"
+    },
+    "Parker och trädgårdar": {
+        "default": "Parks to be categorised by country",
+        "base": "Parks in {}",
+        "SE": "Parks in Sweden"
+    },
+    "Hammarområde": {
+        "default": "Trip hammers",
+        "base": "Trip hammer areas in {}",
+        "SE": "Trip hammer areas in Sweden"
+    },
+    "Fornborg": {
+        "default": "Hill forts",
+        "base": "Hill forts in {}",
+        "SE": "Hill forts in Sweden"
+    },
+    "Universitet": {
+        "default": "Universities and colleges to be categorised by country",
+        "base": "Universities and colleges in {}",
+        "SE": "Universities and colleges in Sweden"
+    },
+    "Teckning": {
+        "default": "Drawings",
+        "base": null,
+        "SE": null
+    },
+    "Kyrkomiljö": {
+        "default": "Churches to be categorised by country",
+        "base": "Churches in {}",
+        "SE": "Churches in Sweden"
+    },
+    "Gränsmärke": {
+        "default": "Border markers",
+        "base": null,
+        "SE": null
+    },
+    "Pappersindustri": {
+        "default": "Pulp and paper industry",
+        "base": "Pulp and paper industry in {}",
+        "SE": "Pulp and paper industry in Sweden"
+    },
+    "Gruvhål": {
+        "default": "Mine shafts",
+        "base": "Mines in {}",
+        "SE": "Mines in Sweden"
+    },
+    "Övriga lämningstyper": {
+        "default": "Historic sites",
+        "base": null,
+        "SE": null
+    },
+    "Industrianläggning": {
+        "default": "Industry",
+        "base": "Industry in {}",
+        "SE": "Industry in Sweden"
+    },
+    "Vintermotiv": {
+        "default": "Winter landscapes",
+        "base": "Winter in {}",
+        "SE": "Winter in Sweden"
+    },
+    "Stadsmiljö": {
+        "default": "Cityscapes",
+        "base": "Cityscapes in {}",
+        "SE": "Cityscapes in Sweden"
+    },
+    "Gravfält": {
+        "default": "Necropolis",
+        "base": "Necropolises in {}",
+        "SE": "Necropolises in Sweden"
+    },
+    "Lokstall": {
+        "default": "Roundhouses",
+        "base": "Roundhouses in {}",
+        "SE": "Roundhouses in Sweden"
+    },
+    "Strandmiljö": {
+        "default": "Beaches to be categorised by country",
+        "base": "Beaches of {}",
+        "SE": "Beaches of Sweden"
+    },
+    "Husgrund, förhistorisk/medeltida": {
+        "default": "Shallow foundations",
+        "base": "Foundations from historical time in {}",
+        "SE": "Foundations from historical time in Sweden"
+    },
+    "Bostadshus": {
+        "default": "Residential buildings",
+        "base": "Residential buildings in {}",
+        "SE": "Residential buildings in Sweden"
+    },
+    "Fiskeläge": {
+        "default": "Fishing villages",
+        "base": "Fishing villages in {}",
+        "SE": "Fishing villages in Sweden"
+    },
+    "Fjällmiljö": {
+        "default": "Mountains to be categorised by country",
+        "base": "Mountains of {}",
+        "SE": "Mountains of Sweden"
+    },
+    "Bruksherrgård": {
+        "default": "Mansions",
+        "base": "Mansions in {}",
+        "SE": "Mansions in Sweden"
+    },
+    "Gruvområde": {
+        "default": "Mines",
+        "base": "Mines in {}",
+        "SE": "Mines in Sweden"
+    },
+    "Stensättning": {
+        "default": "Flat burial cairns",
+        "base": "Flat burial cairns in {}",
+        "SE": "Flat burial cairns in Sweden"
+    },
+    "Torp": {
+        "default": null,
+        "base": null,
+        "SE": "Torp"
+    },
+    "Samhällsservice och teknisk försörjning": {
+        "default": "Public services",
+        "base": "Public services of {}",
+        "SE": "Public services of Sweden"
+    },
+    "Gravvård": {
+        "default": "Tombs",
+        "base": "Tombs in {}",
+        "SE": "Tombs in Sweden"
+    },
+    "Kalkugn": {
+        "default": "Lime kilns",
+        "base": "Lime kilns in {}",
+        "SE": "Lime kilns in Sweden"
+    },
+    "(09) Gravar": {
+        "default": "Graves to be categorised by country",
+        "base": "Graves in {}",
+        "SE": "Graves in Sweden"
+    },
+    "Bildristning": {
+        "default": "Inscriptions",
+        "base": "Inscriptions in {}",
+        "SE": "Inscriptions in Sweden"
+    },
+    "Tätort": {
+        "default": "Urban areas",
+        "base": "Urban areas in {}",
+        "SE": "Urban areas in Sweden"
+    },
+    "Gravar": {
+        "default": "Graves to be categorised by country",
+        "base": "Graves in {}",
+        "SE": "Graves in Sweden"
+    },
+    "Labyrint": {
+        "default": "Labyrinths",
+        "base": "Labyrinths in {}",
+        "SE": "Labyrinths in Sweden"
+    },
+    "Karta": {
+        "default": "Maps",
+        "base": "Maps of {}",
+        "SE": "Maps of Sweden"
+    },
+    "Vindkraftverk": {
+        "default": "Wind turbines",
+        "base": "Wind turbines in {}",
+        "SE": "Wind turbines in Sweden"
+    },
+    "Slott/herresäte": {
+        "default": "Castles to be categorised by country",
+        "base": "Castles in {}",
+        "SE": "Castles in Sweden"
+    },
+    "Världsarv": {
+        "default": "World Heritage Sites to be categorised by country",
+        "base": "World Heritage Sites in {}",
+        "SE": "World Heritage Sites in Sweden"
+    },
+    "Smedja": {
+        "default": "Forges",
+        "base": "Forges in {}",
+        "SE": "Forges in Sweden"
+    },
+    "Utbildning och vetenskap": {
+        "default": "Education",
+        "base": "Education in {}",
+        "SE": "Education in Sweden"
+    },
+    "Badhus": {
+        "default": "Baths to be categorised by country",
+        "base": "Baths in {}",
+        "SE": "Baths in Sweden"
+    },
+    "(10) Klockor": {
+        "default": "Church bells",
+        "base": "Church bells in {}",
+        "SE": "Church bells in Sweden"
+    },
+    "Sameviste": {
+        "default": "Traditional Sami constructions",
+        "base": "Sami camps in {}",
+        "SE": "Sami camps in Sweden"
+    },
+    "Skogsbruk": {
+        "default": "Forestry",
+        "base": "Forestry in {}",
+        "SE": "Forestry in Sweden"
+    },
+    "Sällskapsliv": {
+        "default": "Social life",
+        "base": null,
+        "SE": null
+    },
+    "Byggnadsminnen": {
+        "default": "Listed buildings",
+        "base": "Listed buildings in {}",
+        "SE": "Listed buildings in Sweden"
+    },
+    "(02) Predikstolar": {
+        "default": "Pulpits",
+        "base": "Pulpits in {}",
+        "SE": "Pulpits in Sweden"
+    },
+    "(01) Exteriörer, detaljer": {
+        "default": "Church exteriors",
+        "base": "Church exteriors in {}",
+        "SE": "Church exteriors in Sweden"
+    },
+    "Båtlämning": {
+        "default": "Shipwrecks",
+        "base": "Shipwrecks in {}",
+        "SE": "Shipwrecks in Sweden"
+    },
+    "Industriell verksamhet och skogsbruk": {
+        "default": "Industry",
+        "base": "Industry in {}",
+        "SE": "Industry in Sweden"
+    },
+    "Sågverk": {
+        "default": "Sawmills",
+        "base": "Sawmills in {}",
+        "SE": "Sawmills in Sweden"
+    },
+    "Loge": {
+        "default": "Threshing floors",
+        "base": null,
+        "SE": null
+    },
+    "Betesmark": {
+        "default": "Pastures in unidentified countries",
+        "base": "Pastures in {}",
+        "SE": "Pastures in Sweden"
+    },
+    "Hagmark": {
+        "default": "Pasture",
+        "base": "Pastures in {}",
+        "SE": "Pastures in Sweden"
+    },
+    "Offentlig förvaltning": {
+        "default": "Public services",
+        "base": "Public services of {}",
+        "SE": "Public services of Sweden"
+    },
+    "Stadsport": {
+        "default": "City gates",
+        "base": "City gates in {}",
+        "SE": "City gates in Sweden"
+    },
+    "(02) Interiörer, detaljer": {
+        "default": "Interiors of churches to be categorised by country",
+        "base": "Interiors of churches in {}",
+        "SE": "Interiors of churches in Sweden"
+    },
+    "Kulturreservat": {
+        "default": "Culture reserves",
+        "base": "Culture reserves in {}",
+        "SE": "Culture reserves in Sweden"
+    },
+    "Raä-Fastigheter": {
+        "default": null,
+        "base": null,
+        "SE": "Real estate owned by the Swedish National Heritage Board"
+    },
+    "Befästningsanläggningar": {
+        "default": "Fortresses to be categorised by country",
+        "base": "Fortresses in {}",
+        "SE": "Fortresses in Sweden"
+    },
+    "Borg": {
+        "default": "Fortresses to be categorised by country",
+        "base": "Fortresses in {}",
+        "SE": "Fortresses in Sweden"
+    },
+    "Djur": {
+        "default": "Unidentified animals",
+        "base": "Animals of {}",
+        "SE": "Animals of Sweden"
+    },
+    "Kommunikations- och maritima lämningar": {
+        "default": "Maritime history",
+        "base": "Maritime history of {}",
+        "SE": "Maritime history of Sweden"
+    },
+    "Fyndplats": {
+        "default": "Archaeological sites",
+        "base": "Archaeological finds from {}",
+        "SE": "Archaeological finds from Sweden"
+    },
+    "Fästning": {
+        "default": "Fortresses to be categorised by country",
+        "base": "Fortresses in {}",
+        "SE": "Fortresses in Sweden"
+    },
+    "Hällristning": {
+        "default": "Petroglyphs",
+        "base": "Petroglyphs in {}",
+        "SE": "Petroglyphs in Sweden"
+    },
+    "Sjöfart": {
+        "default": "Water transport",
+        "base": "Water transport in {}",
+        "SE": "Water transport in Sweden"
+    },
+    "Offerplats": {
+        "default": "Offering sites",
+        "base": null,
+        "SE": null
+    },
+    "Stenmur": {
+        "default": "Dry stone walls",
+        "base": "Dry stone walls in {}",
+        "SE": "Dry stone walls in Sweden"
+    },
+    "Vattenbrunn": {
+        "default": "Water wells",
+        "base": "Water wells in {}",
+        "SE": "Water wells in Sweden"
+    },
+    "Bro": {
+        "default": "Bridges to be categorised by country",
+        "base": "Bridges in {}",
+        "SE": "Bridges in Sweden"
+    },
+    "Verkstad": {
+        "default": "Workshops",
+        "base": "Workshops in {}",
+        "SE": "Workshops in Sweden"
+    },
+    "Minnesmärke": {
+        "default": "Monuments and memorials to be categorised by country",
+        "base": "Monuments and memorials in {}",
+        "SE": "Monuments and memorials in Sweden"
+    },
+    "Stall": {
+        "default": "Stables",
+        "base": "Stables in {}",
+        "SE": "Stables in Sweden"
+    },
+    "Försvarsväsen": {
+        "default": "Fortifications",
+        "base": "Fortifications in {}",
+        "SE": "Fortifications in Sweden"
+    },
+    "Boplatser och visten": {
+        "default": "Prehistoric settlements",
+        "base": "Prehistoric settlements in {}",
+        "SE": "Prehistoric settlements in Sweden"
+    },
+    "(02) Interiörer": {
+        "default": "Interiors of churches to be categorised by country",
+        "base": "Interiors of churches in {}",
+        "SE": "Interiors of churches in Sweden"
+    },
+    "Slott och herrgårdar": {
+        "default": "Castles to be categorised by country",
+        "base": "Castles in {}",
+        "SE": "Castles in Sweden"
+    },
+    "Skyltar": {
+        "default": "Signs",
+        "base": "Signs in {}",
+        "SE": "Signs in Sweden"
+    },
+    "Fiske och sjöfart": {
+        "default": "Commercial fishing",
+        "base": "Commercial fishing in {}",
+        "SE": "Commercial fishing in Sweden"
+    },
+    "Slott": {
+        "default": "Castles to be categorised by country",
+        "base": "Castles in {}",
+        "SE": "Castles in Sweden"
+    },
+    "Stenkrets/domarring/skeppssättning": {
+        "default": "Stone ships",
+        "base": "Stone ships in {}",
+        "SE": "Stone ships in Sweden"
+    }
+}

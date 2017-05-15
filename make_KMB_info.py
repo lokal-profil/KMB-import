@@ -29,6 +29,10 @@ class KMBInfo(MakeBaseInfo):
     def __init__(self, **options):
         """Initialise a make_info object."""
         super(KMBInfo, self).__init__(BATCH_CAT, BATCH_DATE, **options)
+        self.commons = pywikibot.Site('commons', 'commons')
+        self.wikidata = pywikibot.Site('wikidata', 'wikidata')
+        self.category_cache = {}  # cache for category_exists()
+        self.photographer_cache = {}
 
     def load_data(self, in_file):
         """
@@ -54,7 +58,7 @@ class KMBInfo(MakeBaseInfo):
         """
         d = {}
         for key, value in raw_data.iteritems():
-            item = KMBItem(value)
+            item = KMBItem(value, self)
             if item.problem:
                 pywikibot.output(
                     'The {0} image was skipped because of: {1}'.format(
@@ -64,7 +68,6 @@ class KMBInfo(MakeBaseInfo):
 
         self.data = d
 
-    # @todo: break out substed lists as mappings - T164567
     def load_mappings(self, update_mappings):
         """
         Update mapping files, load these and package appropriately.
@@ -73,6 +76,11 @@ class KMBInfo(MakeBaseInfo):
         """
         socken_file = os.path.join(MAPPINGS_DIR, 'socken.json')
         kommun_file = os.path.join(MAPPINGS_DIR, 'kommun.json')
+        countries_file = os.path.join(MAPPINGS_DIR, 'countries_for_cats.json')
+        tags_file = os.path.join(MAPPINGS_DIR, 'tags.json')
+        photographer_file = os.path.join(MAPPINGS_DIR, 'photographers.json')
+        photographers_list_file = os.path.join(
+            MAPPINGS_DIR, 'photographers_list.json')
         kmb_files_file = os.path.join(MAPPINGS_DIR, 'kmb_files.json')
 
         if update_mappings:
@@ -80,6 +88,8 @@ class KMBInfo(MakeBaseInfo):
                 'SELECT ?item ?value WHERE {?item wdt:P777 ?value}')
             self.mappings['kommun'] = KMBInfo.query_to_lookup(
                 'SELECT ?item ?value WHERE {?item wdt:P525 ?value}')
+            self.mappings['photographers'] = self.get_photographer_mapping(
+                photographers_list_file)
             self.mappings['kmb_files'] = self.get_existing_kmb_files()
 
             # dump to mappings
@@ -88,14 +98,43 @@ class KMBInfo(MakeBaseInfo):
             common.open_and_write_file(
                 kommun_file, self.mappings['kommun'], as_json=True)
             common.open_and_write_file(
+                photographer_file, self.mappings['photographers'],
+                as_json=True)
+            common.open_and_write_file(
                 kmb_files_file, self.mappings['kmb_files'], as_json=True)
         else:
             self.mappings['socken'] = common.open_and_read_file(
                 socken_file, as_json=True)
             self.mappings['kommun'] = common.open_and_read_file(
                 kommun_file, as_json=True)
+            self.mappings['photographers'] = common.open_and_read_file(
+                photographer_file, as_json=True)
             self.mappings['kmb_files'] = common.open_and_read_file(
                 kmb_files_file, as_json=True)
+
+        self.mappings['countries'] = common.open_and_read_file(
+            countries_file, as_json=True)
+        self.mappings['tags'] = common.open_and_read_file(
+            tags_file, as_json=True)
+
+    # @todo: Remove need for offline list file T165141
+    def get_photographer_mapping(self, photographers_list_file):
+        """
+        Load needed values from Wikidata items for matched photographers.
+
+        Loads commonscat (P373) and creator (P1472).
+
+        :param photographers_list_file: path to file containing
+            photographer-wikidata mapping.
+        """
+        photographer_ids = common.open_and_read_file(
+            photographers_list_file, as_json=True)
+        photographer_props = {'P373': 'commonscat', 'P1472': 'creator'}
+        photographers = {}
+        for name, qid in photographer_ids.iteritems():
+            photographers[name] = self.load_wd_value(
+                qid, photographer_props, self.photographer_cache)
+        return photographers
 
     # @todo: don't we want any other values?
     @staticmethod
@@ -115,6 +154,37 @@ class KMBInfo(MakeBaseInfo):
                 raise pywikibot.Error('Non-unique value in lookup')
             lookup[str(entry[value_label])] = entry[item_label].getID()
         return lookup
+
+    # @todo:move to BatchUploadTools?
+    def load_wd_value(self, qid, props, cache=None):
+        """
+        Load the required property values for a provided Wikidata item.
+
+        If a property is not present in the item it is set to None. If the item
+        has multiple values the first is selected.
+
+        :param qid: The Qid of the Wikidata item
+        :param props: A dict with Pid as key and where the value is used in
+            the outputted dict.
+        :param cache: The cache in which to store the values
+        :return: dict
+        """
+        if cache and qid in cache:
+            return cache[qid]
+
+        data = {}
+        wd_item = pywikibot.ItemPage(self.wikidata, qid)
+        wd_item.exists()  # load data
+        for pid, label in props.iteritems():
+            value = None
+            claims = wd_item.claims.get(pid)
+            if claims:
+                value = claims[0].getTarget()
+            data[label] = value
+
+        if cache:
+            cache[qid] = data
+        return data
 
     def get_existing_kmb_files(self):
         """
@@ -211,9 +281,8 @@ class KMBInfo(MakeBaseInfo):
         template_data['short title'] = item.namn
         template_data['original description'] = item.beskrivning
         template_data['wiki description'] = item.get_wiki_description()
-        template_data['photographer'] = self.get_photographer(item)
-        template_data['depicted place'] = item.get_depicted_place(
-            self.mappings)
+        template_data['photographer'] = item.get_photographer()
+        template_data['depicted place'] = item.get_depicted_place()
         template_data['date'] = item.date
         template_data['permission'] = item.license_text
         template_data['ID'] = item.ID
@@ -239,23 +308,11 @@ class KMBInfo(MakeBaseInfo):
         """
         return item.source
 
-    # @todo: load mapping list instead of substing template - T164567
-    def get_photographer(self, item):
-        """
-        Return a correctly formated photographer value
-
-        :param item: the KMBItem
-        :return: str
-        """
-        template = 'User:Lokal_Profil/nycklar/creators'
-        return '{{safesubst:%s|%s|t}}' % (template, item.byline)
-
     # @todo:
     # * use fmis + bbr for (cached) commonscat searches on wikidata. And if
     #   found then skip various other. - T164572
     # * move some of this to KMBItem and set cats at the same time as the
     #   text is processed.
-    # * Implement taggs from mapping - T164567
     # * Add parish/municipality categorisation when needed - T164576
     def generate_content_cats(self, item):
         """
@@ -273,14 +330,11 @@ class KMBInfo(MakeBaseInfo):
         if item.bbr:
             cats.add('Listed buildings in Sweden')
 
-        # must be better to do this via safesubst
-        for tagg in item.tagg:
-            # @todo: '{{safesubst:User:Lokal_Profil/nycklar/cats|%s|%s|%s}}' % (tagg, item.land.upper(), item.landskap)
-            pass
+        # add tag categories
+        item.make_tag_categories(self.category_cache)
 
         return list(cats)
 
-    # @todo: Implement creator from mapping - T164567
     def generate_meta_cats(self, item, content_cats):
         """
         Produce maintenance categories related to a media file.
@@ -304,9 +358,36 @@ class KMBInfo(MakeBaseInfo):
         #     cats.append(self.make_maintenance_cat('add description'))
 
         # creator cats are classified as meta
-        # @todo: '{{safesubst:User:Lokal_Profil/nycklar/creators|%s|c}} % item.byline
+        photographer_cat = item.get_photographer_cat()
+        if photographer_cat:
+            cats.add(photographer_cat)
 
         return list(cats)
+
+    # @todo: move to BatchUploadTools?
+    def category_exists(self, cat, cache=None):
+        """
+        Ensure a given category really exists on Commons.
+
+        If a cache is provided the replies are cached to reduce the number of
+        lookups.
+
+        :param cat: category name (with or without "Category" prefix)
+        :param cache: The cache in which to store the values
+        :return: bool
+        """
+        if not cat.lower().startswith('category:'):
+            cat = 'Category:{0}'.format(cat)
+
+        if cache and cat in cache:
+            return cache[cat]
+
+        exists = pywikibot.Page(self.commons, cat).exists()
+
+        if cache:
+            cache[cat] = exists
+
+        return exists
 
     @classmethod
     def main(cls, *args):
@@ -327,11 +408,12 @@ class KMBInfo(MakeBaseInfo):
 class KMBItem(object):
     """Store metadata and methods for a single media file."""
 
-    def __init__(self, initial_data):
+    def __init__(self, initial_data, kmb_info):
         """
         Create a KMBItem item from a dict where each key is an attribute.
 
         :param initial_data: dict of data to set up item with
+        :param kmb_info: the KMBInfo instance
         """
         # ensure all required variables are present
         required_entries = ('latitude', 'longitude', 'avbildar')
@@ -345,6 +427,7 @@ class KMBItem(object):
         self.wd = {}  # store for relevant Wikidata identifiers
         self.content_cats = set()  # content relevant categories without prefix
         self.meta_cats = set()  # meta/maintenance proto categories
+        self.kmb_info = kmb_info
 
     def get_other_versions(self):
         """
@@ -393,6 +476,76 @@ class KMBItem(object):
         else:
             raise NotImplementedError
 
+    def make_tag_categories(self, cache):
+        """
+        Construct categories from the provided tags.
+
+        The mapping follows three scenarios:
+        * An exact category for Sweden.
+        * A guessed, and later validated, category where 'Sweden' is replaced
+          by the country name in the Sweden specific category.
+        * A default category (either a "to be categorised by country" category
+          or the subject category without any country information.
+
+        Populates self.content_cats
+
+        :param cache: cache for category existence
+        """
+        tag_map = self.kmb_info.mappings['tags']
+        country_map = self.kmb_info.mappings['countries']
+        for tag in self.tag:
+            if tag in tag_map:
+                cat = None
+                if not self.land or self.land == 'se' and \
+                        tag_map[tag].get('SE'):
+                    cat = tag_map[tag].get('SE')
+                elif self.land.upper() in country_map and \
+                        tag_map[tag].get('base'):
+                    # guess a category
+                    cat = tag_map[tag].get('base').format(
+                        country_map(self.land.upper()))
+                    if not self.kmb_info.category_exists(cat, cache):
+                        # ensure category exists
+                        cat = None
+
+                if not cat:
+                    # fallback independent of country
+                    cat = tag_map[tag].get('default')
+
+                if cat:
+                    self.content_cats.add(cat)
+
+    def get_photographer(self):
+        """
+        Return a correctly formated photographer value in wikitext.
+
+        :return: str
+        """
+        photographer_map = self.kmb_info.mappings['photographers']
+        photographer = None
+        if self.byline.startswith('{{'):
+            # already formatted (i.e. unknown)
+            photographer = self.byline
+        elif self.byline in photographer_map:
+            creator = photographer_map[self.byline].get('creator')
+            photographer = 'Creator:{0}'.format(creator)
+
+        if not photographer:
+            # fallback on plain byline
+            photographer = self.byline
+
+        return photographer
+
+    def get_photographer_cat(self):
+        """
+        Return the commonscat for the photographer.
+
+        :return: str
+        """
+        photographer_map = self.kmb_info.mappings['photographers']
+        if self.byline in photographer_map:
+            return photographer_map[self.byline].get('commonscat')
+
     def get_source(self):
         """Produce a linked source statement."""
         template = '{{Riksantikvarieämbetet cooperation project|coh}}'
@@ -403,15 +556,16 @@ class KMBItem(object):
         return '[{url} {link_text}]\n{template}'.format(
             url=self.source, link_text=txt, template=template)
 
-    def get_depicted_place(self, mappings):
+    def get_depicted_place(self):
         """
         Get a linked version of the depicted place.
 
         If no 'land' is given the image is assumed to depict Sweden.
 
-        :param mappings: the shared mapping object
         :return: depicted_place as wikitext
         """
+        kommun_map = self.kmb_info.mappings['kommun']
+        socken_map = self.kmb_info.mappings['socken']
         depicted_place = None
         if not self.land or self.land == 'se':
             if 'Gotland' in (self.lan, self.landskap) and not self.kommun:
@@ -421,12 +575,12 @@ class KMBItem(object):
             depicted_place = '{{Country|1=SE}}'
             if self.kommun:
                 kommun_id = '{:04d}'.format(int(self.kommun))  # zero pad
-                self.wd['kommun'] = mappings['kommun'][kommun_id]
+                self.wd['kommun'] = kommun_map[kommun_id]
                 depicted_place += ', {{city|%s}}' % self.wd['kommun']
 
                 if self.socken:
                     socken_id = '{:04d}'.format(int(self.socken))  # zero pad
-                    self.wd['socken'] = mappings['socken'][socken_id]
+                    self.wd['socken'] = socken_map[socken_id]
                     depicted_place += ', {{city|%s}}' % self.wd['socken']
             else:
                 if self.lan:
