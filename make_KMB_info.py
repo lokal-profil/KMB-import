@@ -73,22 +73,29 @@ class KMBInfo(MakeBaseInfo):
         """
         socken_file = os.path.join(MAPPINGS_DIR, 'socken.json')
         kommun_file = os.path.join(MAPPINGS_DIR, 'kommun.json')
+        kmb_files_file = os.path.join(MAPPINGS_DIR, 'kmb_files.json')
 
         if update_mappings:
             self.mappings['socken'] = KMBInfo.query_to_lookup(
                 'SELECT ?item ?value WHERE {?item wdt:P777 ?value}')
             self.mappings['kommun'] = KMBInfo.query_to_lookup(
                 'SELECT ?item ?value WHERE {?item wdt:P525 ?value}')
+            self.mappings['kmb_files'] = self.get_existing_kmb_files()
+
             # dump to mappings
             common.open_and_write_file(
                 socken_file, self.mappings['socken'], as_json=True)
             common.open_and_write_file(
                 kommun_file, self.mappings['kommun'], as_json=True)
+            common.open_and_write_file(
+                kmb_files_file, self.mappings['kmb_files'], as_json=True)
         else:
             self.mappings['socken'] = common.open_and_read_file(
                 socken_file, as_json=True)
             self.mappings['kommun'] = common.open_and_read_file(
                 kommun_file, as_json=True)
+            self.mappings['kmb_files'] = common.open_and_read_file(
+                kmb_files_file, as_json=True)
 
     # @todo: don't we want any other values?
     @staticmethod
@@ -108,6 +115,73 @@ class KMBInfo(MakeBaseInfo):
                 raise pywikibot.Error('Non-unique value in lookup')
             lookup[str(entry[value_label])] = entry[item_label].getID()
         return lookup
+
+    def get_existing_kmb_files(self):
+        """
+        Load all files on commons which contain recognisable external links to
+        specific KMB images.
+
+        Filenames include the 'File:' prefix.
+
+        :return: dict with a KMB id as key and a set of matching images as the
+            value.
+        """
+        kmb_files = {}
+        self.find_files_from_pattern(
+            'http://kmb.raa.se/cocoon/bild/show-image.html?id=', kmb_files)
+        self.find_files_from_pattern(
+            'http://kulturarvsdata.se/raa/kmb/', kmb_files)
+
+        return kmb_files
+
+    def find_files_from_pattern(self, url_pattern, kmb_files):
+        """
+        Retrieve all files linking to a kmb file using the provided pattern.
+
+        :param url_pattern: The url_pattern, including the protocol. Only
+            url_patterns where the supplied string is directly followed by the
+            numeric kmb_id are supported.
+        :param kmb_files: the dict in which the found files are stored
+            (using kmb_id as key)
+        """
+        gen = self.linksearch_generator(url_pattern, namespace=6)
+        for entry in gen:
+            kmb_id = entry['url'][len(url_pattern):]
+            if not common.is_int(kmb_id):
+                continue
+            if kmb_id not in kmb_files:
+                kmb_files[kmb_id] = set()
+            kmb_files[kmb_id].add(entry['title'])
+
+    # @todo: move this to common/helpers?
+    def linksearch_generator(self, url, namespace=None):
+        """
+        Construct a generator for the list=exturlusage api call.
+
+        A convenience function to wrap around list=exturlusage api call
+        since pywikibot.Site.exturlusage only returns page objects
+        (not the matched url value).
+
+        :param url: the url to search for, with or without the protocol.
+        :param namespace: namespaces (number) to filter by. Provided as either
+            a list, a string or an integer.
+        :return: generator
+        """
+        raw_url = url
+        default_protocol = 'http'
+
+        protocol, _, url = url.partition('://')
+        if not url:
+            url = raw_url
+            protocol = default_protocol
+
+        if isinstance(namespace, list):
+            namespace = '|'.join(namespace)
+
+        g = pywikibot.data.api.ListGenerator(
+            "exturlusage", euquery=url, site=self.commons,
+            eunamespace=namespace, euprotocol=protocol, euprops='title|url')
+        return g
 
     # @note: this differs from the one created in RAA-tools
     def generate_filename(self, item):
@@ -146,6 +220,7 @@ class KMBInfo(MakeBaseInfo):
         template_data['bildbeteckning'] = item.bildbeteckning
         template_data['source'] = item.get_source()
         template_data['notes'] = ''
+        template_data['other versions'] = item.get_other_versions()
         txt = helpers.output_block_template(template_name, template_data, 0)
 
         # append object location if appropriate
@@ -270,6 +345,23 @@ class KMBItem(object):
         self.wd = {}  # store for relevant Wikidata identifiers
         self.content_cats = set()  # content relevant categories without prefix
         self.meta_cats = set()  # meta/maintenance proto categories
+
+    def get_other_versions(self):
+        """
+        Build a gallery of all images already on Commons which depict
+        (or link to) the same KMB image.
+
+        :return: str
+        """
+        gallery = ''
+        maybe_same = self.kmb_info.mappings['kmb_files'].get(self.ID)
+
+        if maybe_same:
+            gallery = '<gallery>\n{0}\n</gallery>'.format(
+                '\n'.join(maybe_same))
+            self.meta_cats.add('with potential duplicates')
+
+        return gallery
 
     def get_wiki_description(self):
         """
