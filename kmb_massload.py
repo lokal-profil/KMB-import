@@ -17,7 +17,6 @@ def parser(dom, A):
 
     This is all legacy code from RAA-tools
     """
-    A['problem'] = []
     # tags to get
     tagDict = {'namn': ('ns5:itemLabel', None),            # namn
                'beskrivning': ('pres:description', None),  # med ord
@@ -225,12 +224,20 @@ def process_license(entry):
 
 def kmb_wrapper(idno):
     """Get partially processed dataobject for a given kmb id."""
-    A = {'ID': idno}
-    fil = urllib2.urlopen('http://kulturarvsdata.se/raa/kmb/' + idno)
-    dom = parse(fil)
-    fil.close()
-    del fil
-    return parser(dom, A)
+    A = {'ID': idno, 'problem': []}
+    url = 'http://kulturarvsdata.se/raa/kmb/{0}'.format(idno)
+    try:
+        f = urllib2.urlopen(url)
+    except urllib2.HTTPError as e:
+        A['problem'].append('{0}: {1}'.format(e, url))
+        print A['problem'][0]
+    else:
+        dom = parse(f)
+        A = parser(dom, A)
+        f.close()
+        del f
+
+    return A
 
 
 def load_list(filename='kmb_hitlist.json'):
@@ -262,3 +269,7 @@ def run(start=None, end=None):
             timestamp = time.strftime('%H:%M:%S')
             print '%s - %d of %d parsed' % (timestamp, count, total_count)
     output_blob(data)
+
+
+if __name__ == "__main__":
+    run()
