@@ -541,18 +541,13 @@ class KMBItem(object):
         """
         photographer_map = self.kmb_info.mappings['photographers']
         photographer = None
-        if self.byline.startswith('{{'):
-            # already formatted (i.e. unknown)
-            photographer = self.byline
-        elif self.byline in photographer_map:
+        if (not self.byline.startswith('{{')) and \
+                (self.byline in photographer_map):
             creator = photographer_map[self.byline].get('creator')
-            photographer = 'Creator:{0}'.format(creator)
+            if creator:
+                photographer = 'Creator:{0}'.format(creator)
 
-        if not photographer:
-            # fallback on plain byline
-            photographer = self.byline
-
-        return photographer
+        return photographer or self.byline  # fallback on plain byline
 
     def get_photographer_cat(self):
         """
