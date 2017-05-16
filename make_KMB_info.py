@@ -13,8 +13,9 @@ import os.path
 import pywikibot
 from pywikibot.data import sparql
 
-import batchupload.helpers as helpers
 import batchupload.common as common
+import batchupload.helpers as helpers
+import batchupload.listscraper as listscraper
 from batchupload.make_info import MakeBaseInfo
 
 
@@ -79,9 +80,8 @@ class KMBInfo(MakeBaseInfo):
         countries_file = os.path.join(MAPPINGS_DIR, 'countries_for_cats.json')
         tags_file = os.path.join(MAPPINGS_DIR, 'tags.json')
         photographer_file = os.path.join(MAPPINGS_DIR, 'photographers.json')
-        photographers_list_file = os.path.join(
-            MAPPINGS_DIR, 'photographers_list.json')
         kmb_files_file = os.path.join(MAPPINGS_DIR, 'kmb_files.json')
+        photographer_page = 'Institution:Riksantikvarieämbetet/KMB/creators'
 
         if update_mappings:
             self.mappings['socken'] = KMBInfo.query_to_lookup(
@@ -89,7 +89,7 @@ class KMBInfo(MakeBaseInfo):
             self.mappings['kommun'] = KMBInfo.query_to_lookup(
                 'SELECT ?item ?value WHERE {?item wdt:P525 ?value}')
             self.mappings['photographers'] = self.get_photographer_mapping(
-                photographers_list_file)
+                photographer_page)
             self.mappings['kmb_files'] = self.get_existing_kmb_files()
 
             # dump to mappings
@@ -117,18 +117,32 @@ class KMBInfo(MakeBaseInfo):
         self.mappings['tags'] = common.open_and_read_file(
             tags_file, as_json=True)
 
-    # @todo: Remove need for offline list file T165141
-    def get_photographer_mapping(self, photographers_list_file):
+    def get_photographer_mapping(self, photographer_page):
         """
         Load needed values from Wikidata items for matched photographers.
 
         Loads commonscat (P373) and creator (P1472).
 
-        :param photographers_list_file: path to file containing
+        :param photographer_page: page name on Wikimedia Commons containing
             photographer-wikidata mapping.
         """
-        photographer_ids = common.open_and_read_file(
-            photographers_list_file, as_json=True)
+        # scrape page
+        page = pywikibot.Page(self.commons, photographer_page)
+        data = listscraper.parseEntries(
+            page.text,
+            row_t='User:André Costa (WMSE)/mapping-row',
+            default_params={'name': '', 'wikidata': '', 'frequency': ''})
+
+        # load data on page
+        photographer_ids = {}
+        for entry in data:
+            if entry['wikidata'] and entry['name']:
+                wikidata = entry['wikidata'][0]
+                name = entry['name'][0]
+                if wikidata != '-':
+                    photographer_ids[name] = wikidata
+
+        # look up data on Wikidata
         photographer_props = {'P373': 'commonscat', 'P1472': 'creator'}
         photographers = {}
         for name, qid in photographer_ids.iteritems():
