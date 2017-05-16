@@ -202,6 +202,10 @@ class KMBInfo(MakeBaseInfo):
         self.find_files_from_pattern(
             'http://kulturarvsdata.se/raa/kmb/', kmb_files)
 
+        # convert sets to list (to allow for json storage)
+        for k, v in kmb_files.iteritems():
+            kmb_files[k] = list(v)
+
         return kmb_files
 
     def find_files_from_pattern(self, url_pattern, kmb_files):
@@ -250,7 +254,7 @@ class KMBInfo(MakeBaseInfo):
 
         g = pywikibot.data.api.ListGenerator(
             "exturlusage", euquery=url, site=self.commons,
-            eunamespace=namespace, euprotocol=protocol, euprops='title|url')
+            eunamespace=namespace, euprotocol=protocol, euprop='title|url')
         return g
 
     # @note: this differs from the one created in RAA-tools
