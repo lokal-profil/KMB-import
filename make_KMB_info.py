@@ -9,6 +9,7 @@ BatchUploadTools compliant json file.
 from __future__ import unicode_literals
 from collections import OrderedDict
 import os.path
+import requests
 
 import pywikibot
 from pywikibot.data import sparql
@@ -81,6 +82,7 @@ class KMBInfo(MakeBaseInfo):
         tags_file = os.path.join(MAPPINGS_DIR, 'tags.json')
         photographer_file = os.path.join(MAPPINGS_DIR, 'photographers.json')
         kmb_files_file = os.path.join(MAPPINGS_DIR, 'kmb_files.json')
+        commonscat_file = os.path.join(MAPPINGS_DIR, 'commonscat.json')
         photographer_page = 'Institution:Riksantikvarieämbetet/KMB/creators'
 
         if update_mappings:
@@ -91,6 +93,13 @@ class KMBInfo(MakeBaseInfo):
             self.mappings['photographers'] = self.get_photographer_mapping(
                 photographer_page)
             self.mappings['kmb_files'] = self.get_existing_kmb_files()
+            self.mappings['commonscat'] = {'bbr': {}, 'fmis': {}}
+            KMBInfo.get_commonscat_from_heritage(
+                'se-bbr', limit=1000,
+                data=self.mappings['commonscat']['bbr'])
+            KMBInfo.get_commonscat_from_heritage(
+                'se-fornmin', limit=1000,
+                data=self.mappings['commonscat']['fmis'])
 
             # dump to mappings
             common.open_and_write_file(
@@ -102,6 +111,8 @@ class KMBInfo(MakeBaseInfo):
                 as_json=True)
             common.open_and_write_file(
                 kmb_files_file, self.mappings['kmb_files'], as_json=True)
+            common.open_and_write_file(
+                commonscat_file, self.mappings['commonscat'], as_json=True)
         else:
             self.mappings['socken'] = common.open_and_read_file(
                 socken_file, as_json=True)
@@ -111,6 +122,8 @@ class KMBInfo(MakeBaseInfo):
                 photographer_file, as_json=True)
             self.mappings['kmb_files'] = common.open_and_read_file(
                 kmb_files_file, as_json=True)
+            self.mappings['commonscat'] = common.open_and_read_file(
+                commonscat_file, as_json=True)
 
         self.mappings['countries'] = common.open_and_read_file(
             countries_file, as_json=True)
@@ -271,6 +284,52 @@ class KMBInfo(MakeBaseInfo):
             eunamespace=namespace, euprotocol=protocol, euprop='title|url')
         return g
 
+    @staticmethod
+    def get_commonscat_from_heritage(dataset, data=None, props=None,
+                                     limit=None, srcontinue=None):
+        """
+        Get all commonscat entries in a dataset from the heritage database.
+
+        This is needed until all of the data exists on Wikidata.
+        Also returns the wikidata id if any is known.
+
+        :param dataset: string describing the dataset e.g. se-bbr
+        :param data: dict to which information should be added
+        :param props: properties to request. Defaults to 'id', 'commonscat' and
+            'wd_item'.
+        :param limit: the number of records to request at once
+            (uses api default unless provided)
+        :param srcontinue: continuation parameter to attach to the request
+        :return: dict with found data
+        """
+        props = props or ('id', 'commonscat', 'wd_item')
+        data = data or {}
+        base_url = 'https://tools.wmflabs.org/heritage/api/api.php?action=search&format=json&srwithcommonscat=1'  # noqa E501
+        url = '{0}&srcountry={1}&props={2}'.format(
+            base_url, dataset, '|'.join(props))
+
+        if limit:
+            url += '&limit={0}'.format(limit)
+
+        if srcontinue:
+            url += '&srcontinue={0}'.format(srcontinue)
+
+        # @todo add a try/except
+        r = requests.get(url)
+        req_data = r.json()
+
+        for entry in req_data['monuments']:
+            data[entry['id']] = {
+                'wd': entry['wd_item'],
+                'cat': entry['commonscat']}
+
+        if req_data.get('continue'):
+            KMBInfo.get_commonscat_from_heritage(
+                dataset, data=data, props=props, limit=limit,
+                srcontinue=req_data['continue']['srcontinue'])
+
+        return data
+
     # @note: this differs from the one created in RAA-tools
     def generate_filename(self, item):
         """
@@ -284,9 +343,6 @@ class KMBInfo(MakeBaseInfo):
         """
         return helpers.format_filename(item.get_description(), 'KMB', item.ID)
 
-    # @todo:
-    # * Add a collaboration + COH template in the source field - T164569
-    # * Add the source link to the source field - T164569
     def make_info_template(self, item):
         """
         Create the description template for a single KMB entry.
@@ -326,12 +382,6 @@ class KMBInfo(MakeBaseInfo):
         """
         return item.source
 
-    # @todo:
-    # * use fmis + bbr for (cached) commonscat searches on wikidata. And if
-    #   found then skip various other. - T164572
-    # * move some of this to KMBItem and set cats at the same time as the
-    #   text is processed.
-    # * Add parish/municipality categorisation when needed - T164576
     def generate_content_cats(self, item):
         """
         Extract any mapped keyword categories or depicted categories.
@@ -339,19 +389,17 @@ class KMBInfo(MakeBaseInfo):
         :param item: the KMBItem to analyse
         :return: list of categories (without "Category:" prefix)
         """
-        cats = item.content_cats
-
         # depicted
-        if item.fmis:
-            cats.add('Archaeological monuments in %s' % item.landskap)
-            cats.add('Archaeological monuments in %s County' % item.lan)
-        if item.bbr:
-            cats.add('Listed buildings in Sweden')
+        found_commonscat = item.make_commonscat_categories(self.category_cache)
 
-        # add tag categories
-        item.make_tag_categories(self.category_cache)
+        # add tag categories unless a commonscat was found
+        if not found_commonscat:
+            item.make_tag_categories(self.category_cache)
 
-        return list(cats)
+        # @todo: Add parish/municipality categorisation when needed
+        #        i.e. if not item.needs_place_cat - T164576
+
+        return list(item.content_cats)
 
     def generate_meta_cats(self, item, content_cats):
         """
@@ -361,7 +409,6 @@ class KMBInfo(MakeBaseInfo):
         :param content_cats: any content categories for the file
         :return: list of categories (without "Category:" prefix)
         """
-        pass
         cats = item.meta_cats
 
         # base cats
@@ -445,7 +492,8 @@ class KMBItem(object):
         self.wd = {}  # store for relevant Wikidata identifiers
         self.content_cats = set()  # content relevant categories without prefix
         self.meta_cats = set()  # meta/maintenance proto categories
-        self.kmb_info = kmb_info
+        self.kmb_info = kmb_info  # the KBMInfo instance creating this KMBItem
+        self.needs_place_cat = True  # if item needs categorisation by place
 
     def get_other_versions(self):
         """
@@ -494,13 +542,77 @@ class KMBItem(object):
         else:
             raise NotImplementedError
 
+    def make_commonscat_categories(self, cache):
+        """
+        Set categories based on depicted BBR/FMIS entries.
+
+        Sets a commonscat if one is found else a fallback category for the
+        object type.
+
+        Populates self.content_cats and modifies self.needs_place_cat.
+
+        :param cache: cache for category existence
+        :return: bool whether a comonscat was found
+        """
+        commonscat_map = self.kmb_info.mappings['commonscat']
+
+        found_commonscat = False
+        for fmis_id in self.fmis:
+            if fmis_id in commonscat_map['fmis']:
+                found_commonscat = True
+                self.content_cats.add(commonscat_map['fmis'][fmis_id]['cat'])
+            else:
+                self.make_default_fmis_category(cache)
+        for bbr_id in self.bbr:
+            if bbr_id in commonscat_map['bbr']:
+                found_commonscat = True
+                self.content_cats.add(commonscat_map['bbr'][bbr_id]['cat'])
+            else:
+                self.content_cats.add('Listed buildings in Sweden')
+
+        if found_commonscat:
+            self.needs_place_cat = False
+
+        return found_commonscat
+
+    def make_default_fmis_category(self, cache):
+        """
+        Set FMIS default categories based on municipality.
+
+        Makes a guess for the category name. If not found it defaults to
+        County (Län) + Province (Landskap) categories.
+
+        Populates self.content_cats and modifies self.needs_place_cat.
+
+        :param cache: cache for category existence
+        """
+        test_cat = None
+        if self.kommunName:
+            test_cat = 'Archaeological monuments in {} Municipality'.format(
+                self.kommunName)
+            if not self.kmb_info.category_exists(test_cat, cache):
+                test_cat = 'Archaeological monuments in {}'.format(
+                    self.kommunName)
+                if not self.kmb_info.category_exists(test_cat, cache):
+                    test_cat = None
+
+        if test_cat:
+            self.needs_place_cat = False
+            self.content_cats.add(test_cat)
+        else:
+            self.content_cats.add(
+                'Archaeological monuments in %s' % self.landskap)
+            self.content_cats.add(
+                'Archaeological monuments in %s County' % self.lan)
+
     def make_tag_categories(self, cache):
         """
         Construct categories from the provided tags.
 
-        The mapping follows three scenarios:
+        The mapping follows four scenarios:
+        * A guessed, and validated, category on municipal level in Sweden.
         * An exact category for Sweden.
-        * A guessed, and later validated, category where 'Sweden' is replaced
+        * A guessed, and validated, category where 'Sweden' is replaced
           by the country name in the Sweden specific category.
         * A default category (either a "to be categorised by country" category
           or the subject category without any country information.
@@ -512,19 +624,33 @@ class KMBItem(object):
         tag_map = self.kmb_info.mappings['tags']
         country_map = self.kmb_info.mappings['countries']
         for tag in self.tag:
+            if (self.fmis and tag == 'Fornminnen') or \
+                    (self.bbr and tag.startswith('Byggnadsminnen')):
+                # avoid similar cat to fallback in make_commonscat_categories
+                continue
+
             if tag in tag_map:
                 cat = None
                 if not self.land or self.land == 'se' and \
                         tag_map[tag].get('SE'):
                     cat = tag_map[tag].get('SE')
+
+                    # attempt municipal categorisation
+                    if self.kommunName:
+                        test_cat = tag_map[tag].get('SE').replace(
+                            'Sweden', '{} Municipality'.format(
+                                self.kommunName))
+                        if self.kmb_info.category_exists(test_cat, cache):
+                            self.needs_place_cat = False
+                            cat = test_cat
                 elif self.land.upper() in country_map and \
                         tag_map[tag].get('base'):
                     # guess a category
-                    cat = tag_map[tag].get('base').format(
+                    test_cat = tag_map[tag].get('base').format(
                         country_map(self.land.upper()))
-                    if not self.kmb_info.category_exists(cat, cache):
-                        # ensure category exists
-                        cat = None
+                    if self.kmb_info.category_exists(test_cat, cache):
+                        self.needs_place_cat = False
+                        cat = test_cat
 
                 if not cat:
                     # fallback independent of country
