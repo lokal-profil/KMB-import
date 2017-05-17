@@ -142,15 +142,40 @@ def parser(dom, A):
                 print "Empty 'ns5:itemKeyWord' in %s" % A['ID']
     # memory seems to be an issue so kill dom
     del dom, xmlTag
+
     process_date(A)
     process_byline(A)
-    # ##Creator
     process_license(A)
 
     # convert sets to lists to allow for json storage)
     A['bbr'] = list(A['bbr'])
     A['fmis'] = list(A['fmis'])
+    normalise_ids(A)
+    handle_gotland(A)
     return A
+
+
+def normalise_ids(entry):
+    """Normalise municipality, parish and country codes."""
+    if entry['kommun']:
+        entry['kommun'] = '{:04d}'.format(int(entry['kommun']))  # zero pad
+    if entry['socken']:
+        entry['socken'] = '{:04d}'.format(int(entry['socken']))  # zero pad
+    if entry['land']:
+        entry['land'] = entry['land'].upper()
+
+
+def handle_gotland(entry):
+    """
+    Ensure Gotland has municipality code and not just county/province.
+
+    Relies on the fact that county/province and municipality are equivalent
+    in this one case. Which is probably also why this particular municipality
+    id is frequently left out.
+    """
+    if not entry['kommun'] and 'Gotland' in (entry['lan'], entry['landskap']):
+        entry['kommun'] = '0980'  # Gotlands kommun
+        entry['kommunName'] = 'Gotland'
 
 
 def process_depicted(entry, url):

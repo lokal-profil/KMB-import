@@ -86,10 +86,13 @@ class KMBInfo(MakeBaseInfo):
         photographer_page = 'Institution:Riksantikvarieämbetet/KMB/creators'
 
         if update_mappings:
+            query_props = {'P373': 'commonscat'}
             self.mappings['socken'] = KMBInfo.query_to_lookup(
-                'SELECT ?item ?value WHERE {?item wdt:P777 ?value}')
+                KMBInfo.build_query('P777', optional_props=query_props.keys()),
+                props=query_props)
             self.mappings['kommun'] = KMBInfo.query_to_lookup(
-                'SELECT ?item ?value WHERE {?item wdt:P525 ?value}')
+                KMBInfo.build_query('P525', optional_props=query_props.keys()),
+                props=query_props)
             self.mappings['photographers'] = self.get_photographer_mapping(
                 photographer_page)
             self.mappings['kmb_files'] = self.get_existing_kmb_files()
@@ -163,14 +166,45 @@ class KMBInfo(MakeBaseInfo):
                 qid, photographer_props, self.photographer_cache)
         return photographers
 
-    # @todo: don't we want any other values?
+    # @todo:move to BatchUploadTools?
     @staticmethod
-    def query_to_lookup(query, item_label='item', value_label='value'):
+    def build_query(main_prop, optional_props=None):
+        """
+        Construct a sparql query returning items containing a given property.
+
+        The main_prop is given the label 'value' whereas any optional_props
+        use the property pid as the label.
+
+        :param main_prop: property pid (with P-prefix) to require
+        :param optional_props: list of other properties pids to include as
+            optional
+        """
+        optional_props = optional_props or []
+        query = 'SELECT ?item ?value '
+        if optional_props:
+            query += '?{0} '.format(' ?'.join(optional_props))
+        query += 'WHERE { '
+        query += '?item wdt:{0} ?value . '.format(main_prop)
+        for prop in optional_props:
+            query += 'OPTIONAL { ?item wdt:%s ?%s } ' % (prop, prop)
+        query += '}'
+        return query
+
+    # @todo:move to BatchUploadTools?
+    @staticmethod
+    def query_to_lookup(query, item_label='item', value_label='value',
+                        props=None):
         """
         Fetch sparql result and return it as a lookup table for wikidata id.
 
+        If props are not provided the returned dict simply consists of
+        value_label:item_label pairs. If props are provided the returned dict
+        becomes value_label:{'wd':item_label, other props}
+
         :param item_label: the label of the selected wikidata id
         :param value_label: the label of the selected lookup key
+        :param props: dict of other properties to save from the results using
+            the format label_in_sparql:key_in_output.
         :return: dict
         """
         wdqs = sparql.SparqlQuery()
@@ -179,7 +213,18 @@ class KMBInfo(MakeBaseInfo):
         for entry in result:
             if entry[value_label] in lookup:
                 raise pywikibot.Error('Non-unique value in lookup')
-            lookup[str(entry[value_label])] = entry[item_label].getID()
+            key = str(entry[value_label])
+            qid = entry[item_label].getID()
+            if not props:
+                lookup[key] = qid
+            else:
+                lookup[key] = {'wd': qid}
+                for prop, label in props.iteritems():
+                    if entry[prop] and not entry[prop].type:
+                        # pywikibot sparql has issues with unicode
+                        # this can be dumped when we switch to PY3
+                        entry[prop] = repr(entry[prop]).decode('utf-8')
+                    lookup[key][label] = entry[prop]
         return lookup
 
     # @todo:move to BatchUploadTools?
@@ -396,8 +441,9 @@ class KMBInfo(MakeBaseInfo):
         if not found_commonscat:
             item.make_tag_categories(self.category_cache)
 
-        # @todo: Add parish/municipality categorisation when needed
-        #        i.e. if not item.needs_place_cat - T164576
+        # Add parish/municipality categorisation when needed
+        if item.needs_place_cat:
+            item.make_place_category()
 
         return list(item.content_cats)
 
@@ -631,7 +677,7 @@ class KMBItem(object):
 
             if tag in tag_map:
                 cat = None
-                if not self.land or self.land == 'se' and \
+                if not self.land or self.land == 'SE' and \
                         tag_map[tag].get('SE'):
                     cat = tag_map[tag].get('SE')
 
@@ -643,11 +689,10 @@ class KMBItem(object):
                         if self.kmb_info.category_exists(test_cat, cache):
                             self.needs_place_cat = False
                             cat = test_cat
-                elif self.land.upper() in country_map and \
-                        tag_map[tag].get('base'):
+                elif self.land in country_map and tag_map[tag].get('base'):
                     # guess a category
                     test_cat = tag_map[tag].get('base').format(
-                        country_map(self.land.upper()))
+                        country_map(self.land))
                     if self.kmb_info.category_exists(test_cat, cache):
                         self.needs_place_cat = False
                         cat = test_cat
@@ -695,6 +740,26 @@ class KMBItem(object):
         return '[{url} {link_text}]\n{template}'.format(
             url=self.source, link_text=txt, template=template)
 
+    def make_place_category(self):
+        """Add category for parish or municipality."""
+        kommun_map = self.kmb_info.mappings['kommun']
+        socken_map = self.kmb_info.mappings['socken']
+        cat = None
+
+        if not self.land or self.land == 'SE':
+            if self.socken:
+                cat = socken_map[self.socken]['commonscat']
+
+            if not cat and self.kommun:
+                cat = kommun_map[self.kommun]['commonscat']
+
+        if cat:
+            self.content_cats.add(cat)
+            return True
+        else:
+            self.meta_cats.add('needing categorisation (place)')
+            return False
+
     def get_depicted_place(self):
         """
         Get a linked version of the depicted place.
@@ -706,20 +771,15 @@ class KMBItem(object):
         kommun_map = self.kmb_info.mappings['kommun']
         socken_map = self.kmb_info.mappings['socken']
         depicted_place = None
-        if not self.land or self.land == 'se':
-            if 'Gotland' in (self.lan, self.landskap) and not self.kommun:
-                # since lan/landskap/kommun are equivalent in this case
-                self.kommun = '0980'  # Gotlands kommun
-
+        if not self.land or self.land == 'SE':
             depicted_place = '{{Country|1=SE}}'
+
             if self.kommun:
-                kommun_id = '{:04d}'.format(int(self.kommun))  # zero pad
-                self.wd['kommun'] = kommun_map[kommun_id]
+                self.wd['kommun'] = kommun_map[self.kommun]['wd']
                 depicted_place += ', {{city|%s}}' % self.wd['kommun']
 
                 if self.socken:
-                    socken_id = '{:04d}'.format(int(self.socken))  # zero pad
-                    self.wd['socken'] = socken_map[socken_id]
+                    self.wd['socken'] = socken_map[self.socken]['wd']
                     depicted_place += ', {{city|%s}}' % self.wd['socken']
             else:
                 if self.lan:
@@ -730,7 +790,7 @@ class KMBItem(object):
                     self.meta_cats.add(
                         'needing categorisation (no municipality)')
         else:
-            depicted_place = '{{Country|1=%s}}' % self.land.upper()
+            depicted_place = '{{Country|1=%s}}' % self.land
             self.meta_cats.add('needing categorisation (not from Sweden)')
 
         return depicted_place
