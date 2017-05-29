@@ -80,6 +80,8 @@ class KMBInfo(MakeBaseInfo):
         kommun_file = os.path.join(MAPPINGS_DIR, 'kommun.json')
         countries_file = os.path.join(MAPPINGS_DIR, 'countries_for_cats.json')
         tags_file = os.path.join(MAPPINGS_DIR, 'tags.json')
+        primary_classes_file = os.path.join(
+            MAPPINGS_DIR, 'primary_classes.json')
         photographer_file = os.path.join(MAPPINGS_DIR, 'photographers.json')
         kmb_files_file = os.path.join(MAPPINGS_DIR, 'kmb_files.json')
         commonscat_file = os.path.join(MAPPINGS_DIR, 'commonscat.json')
@@ -132,6 +134,8 @@ class KMBInfo(MakeBaseInfo):
             countries_file, as_json=True)
         self.mappings['tags'] = common.open_and_read_file(
             tags_file, as_json=True)
+        self.mappings['primary_classes'] = common.open_and_read_file(
+            primary_classes_file, as_json=True)
 
     def get_photographer_mapping(self, photographer_page):
         """
@@ -439,7 +443,8 @@ class KMBInfo(MakeBaseInfo):
 
         # add tag categories unless a commonscat was found
         if not found_commonscat:
-            item.make_tag_categories(self.category_cache)
+            item.make_item_class_categories(self.category_cache)
+            item.make_item_keyword_categories(self.category_cache)
 
         # Add parish/municipality categorisation when needed
         if item.needs_place_cat:
@@ -651,13 +656,46 @@ class KMBItem(object):
             self.content_cats.add(
                 'Archaeological monuments in %s County' % self.lan)
 
-    def make_tag_categories(self, cache):
+    def make_item_class_categories(self, cache):
         """
-        Construct categories from the provided tags.
+        Construct categories from the item class values.
+
+        :param cache: cache for category existence
+        """
+        primary_classes = self.kmb_info.mappings['primary_classes']
+
+        # find the class/tag that is also in primary_classes
+        primary_tag = None
+        intersection = list(set(primary_classes) & set(self.item_classes))
+        if len(intersection) == 1:
+            primary_tag = intersection[0]
+        elif len(intersection) > 1:
+            pywikibot.warning(
+                "Found two primary classes. Need to rethink the logic. "
+                "{idno}: '{primary}'".format(
+                    idno=self.ID, primary="', '".join(intersection)))
+
+        if not primary_tag or not self.add_single_tag(primary_tag, cache):
+            for tag in self.item_classes:
+                if tag != primary_tag:
+                    self.add_single_tag(tag, cache)
+
+    def make_item_keyword_categories(self, cache):
+        """
+        Construct categories from the item keyword values.
+
+        :param cache: cache for category existence
+        """
+        for tag in self.item_keywords:
+            self.add_single_tag(tag, cache)
+
+    def add_single_tag(self, tag, cache):
+        """
+        Construct a category from a single provided tag.
 
         The mapping follows four scenarios:
         * A guessed, and validated, category on municipal level in Sweden.
-        * An exact category for Sweden.
+        * An exact category on national level for Sweden.
         * A guessed, and validated, category where 'Sweden' is replaced
           by the country name in the Sweden specific category.
         * A default category (either a "to be categorised by country" category
@@ -666,43 +704,43 @@ class KMBItem(object):
         Populates self.content_cats
 
         :param cache: cache for category existence
+        :param tag: the tag (string) to be mapped to a category
+        :return: bool whether a category was added
         """
+        # avoid similar cat to fallback in make_commonscat_categories
+        if (self.fmis and tag == 'Fornminnen') or \
+                (self.bbr and tag.startswith('Byggnadsminnen')):
+            return False
+
         tag_map = self.kmb_info.mappings['tags']
         country_map = self.kmb_info.mappings['countries']
-        for tag in self.tag:
-            if (self.fmis and tag == 'Fornminnen') or \
-                    (self.bbr and tag.startswith('Byggnadsminnen')):
-                # avoid similar cat to fallback in make_commonscat_categories
-                continue
+        if tag in tag_map:
+            cat = None
+            if (not self.land or self.land == 'SE') and tag_map[tag].get('SE'):
+                cat = tag_map[tag].get('SE')
 
-            if tag in tag_map:
-                cat = None
-                if not self.land or self.land == 'SE' and \
-                        tag_map[tag].get('SE'):
-                    cat = tag_map[tag].get('SE')
-
-                    # attempt municipal categorisation
-                    if self.kommunName:
-                        test_cat = tag_map[tag].get('SE').replace(
-                            'Sweden', '{} Municipality'.format(
-                                self.kommunName))
-                        if self.kmb_info.category_exists(test_cat, cache):
-                            self.needs_place_cat = False
-                            cat = test_cat
-                elif self.land in country_map and tag_map[tag].get('base'):
-                    # guess a category
-                    test_cat = tag_map[tag].get('base').format(
-                        country_map(self.land))
+                # attempt municipal categorisation
+                if self.kommunName:
+                    test_cat = tag_map[tag].get('SE').replace(
+                        'Sweden', '{} Municipality'.format(self.kommunName))
                     if self.kmb_info.category_exists(test_cat, cache):
                         self.needs_place_cat = False
                         cat = test_cat
+            elif self.land in country_map and tag_map[tag].get('base'):
+                test_cat = tag_map[tag].get('base').format(
+                    country_map(self.land))
+                if self.kmb_info.category_exists(test_cat, cache):
+                    self.needs_place_cat = False
+                    cat = test_cat
 
-                if not cat:
-                    # fallback independent of country
-                    cat = tag_map[tag].get('default')
+            if not cat:
+                # fallback independent of country
+                cat = tag_map[tag].get('default')
 
-                if cat:
-                    self.content_cats.add(cat)
+            if cat:
+                self.content_cats.add(cat)
+                return True
+        return False
 
     def get_photographer(self):
         """

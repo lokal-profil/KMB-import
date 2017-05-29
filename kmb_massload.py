@@ -118,28 +118,10 @@ def parser(dom, A):
             url = x.attributes['rdf:resource'].value
             process_depicted(A, url)
 
-    # and an attempt at determining categories
-    xmlTag = dom.getElementsByTagName('ns5:itemClassName')
-    if not len(xmlTag) == 0:
-        A['tag'] = []
-        for x in xmlTag:
-            try:
-                A['tag'].append(x.childNodes[0].data.strip())
-            except IndexError:
-                # Means data for this field was mising
-                print "Empty 'ns5:itemClassName' in %s" % A['ID']
-    else:
-        A['tag'] = []
-    xmlTag = dom.getElementsByTagName('ns5:itemKeyWord')
-    if not len(xmlTag) == 0:
-        if len(A['tag']) == 0:
-            A['tag'] = []
-        for x in xmlTag:
-            try:
-                A['tag'].append(x.childNodes[0].data.strip())
-            except IndexError:
-                # Means data for this field was mising
-                print "Empty 'ns5:itemKeyWord' in %s" % A['ID']
+    # attempt at determining tags (used for catgories)
+    process_tags(A, dom, 'item_classes', 'ns5:itemClassName')
+    process_tags(A, dom, 'item_keywords', 'ns5:itemKeyWord')
+
     # memory seems to be an issue so kill dom
     del dom, xmlTag
 
@@ -153,6 +135,25 @@ def parser(dom, A):
     normalise_ids(A)
     handle_gotland(A)
     return A
+
+
+def process_tags(entry, dom, label, xml_tag):
+    """
+    Process tags of a given type.
+
+    :param entry: the dict of parsed data for the image
+    :param dom: the dom being analysed
+    :param label: the label under which the processed tags should be stored
+    :param xml_tag: the xml tag name to search for
+    """
+    entry[label] = []
+    elements = dom.getElementsByTagName(xml_tag)
+    for element in elements:
+        try:
+            entry[label].append(element.childNodes[0].data.strip())
+        except IndexError:
+            # Means data for this field was mising
+            print "Empty '{0}' in {1}".format(xml_tag, entry['ID'])
 
 
 def normalise_ids(entry):
