@@ -23,6 +23,7 @@ from batchupload.make_info import MakeBaseInfo
 MAPPINGS_DIR = 'mappings'
 BATCH_CAT = 'Media contributed by RAÄ'  # stem for maintenance categories
 BATCH_DATE = '2017-05'  # branch for this particular batch upload
+LOGFILE = 'kmb_processing.log'
 
 
 class KMBInfo(MakeBaseInfo):
@@ -35,6 +36,7 @@ class KMBInfo(MakeBaseInfo):
         self.wikidata = pywikibot.Site('wikidata', 'wikidata')
         self.category_cache = {}  # cache for category_exists()
         self.photographer_cache = {}
+        self.log = common.LogFile('', LOGFILE)
 
     def load_data(self, in_file):
         """
@@ -62,9 +64,10 @@ class KMBInfo(MakeBaseInfo):
         for key, value in raw_data.iteritems():
             item = KMBItem(value, self)
             if item.problem:
-                pywikibot.output(
-                    'The {0} image was skipped because of: {1}'.format(
-                        item.ID, '\n'.join(item.problem)))
+                text = '{0} -- image was skipped because of: {1}'.format(
+                    item.ID, '\n'.join(item.problem))
+                pywikibot.output(text)
+                self.log.write(text)
             else:
                 d[key] = item
 
@@ -514,11 +517,15 @@ class KMBInfo(MakeBaseInfo):
             '\t-in_file:PATH path to metadata file\n'
             '\t-dir:PATH specifies the path to the directory containing a '
             'user_config.py file (optional)\n'
+            '\t-update_mappings:BOOL if mappings should first be updated '
+            'against online sources (defaults to True)\n'
             '\tExample:\n'
-            '\tpython make_KMB_info.py -in_file:KMB/kmb_data.json '
-            '-base_name:kmb_output -dir:KMB\n'
+            '\tpython make_KMB_info.py -in_file:kmb_data.json '
+            '-base_name:kmb_output -update_mappings:True -dir:KMB\n'
         )
-        super(KMBInfo, cls).main(usage=usage, *args)
+        info = super(KMBInfo, cls).main(usage=usage, *args)
+        if info:
+            pywikibot.output(info.log.close_and_confirm())
 
 
 class KMBItem(object):
@@ -545,6 +552,7 @@ class KMBItem(object):
         self.meta_cats = set()  # meta/maintenance proto categories
         self.kmb_info = kmb_info  # the KBMInfo instance creating this KMBItem
         self.needs_place_cat = True  # if item needs categorisation by place
+        self.log = kmb_info.log
 
     def get_other_versions(self):
         """
@@ -670,7 +678,8 @@ class KMBItem(object):
             if self.kmb_info.category_exists(test_cat, cache):
                 self.content_cats.add(test_cat)
             else:
-                # @todo: add an entry to the log here
+                self.log.write('{0} -- Had to fall back on "Listed buildings '
+                               'in Sweden".'.format(self.ID))
                 self.content_cats.add('Listed buildings in Sweden')
 
     def municipal_subcategory(self, cat_base, cache):

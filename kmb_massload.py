@@ -3,12 +3,15 @@
 """Get parsed data for whole kmb hitlist and store as json."""
 from __future__ import unicode_literals
 import urllib2
-import codecs
 import time
-import json
 from xml.dom.minidom import parse
+import pywikibot
 import batchupload.helpers as helpers
+import batchupload.common as common
+
+
 THROTTLE = 0.5
+LOGFILE = 'kmb_massloading.log'
 
 
 class BbrTemplate(object):
@@ -54,7 +57,7 @@ class FmisTemplate(object):
         return '{{Fornminne|%s}}' % self.idno
 
 
-def parser(dom, A):
+def parser(dom, A, log):
     """
     Parse and process the xml metadata into a dict.
 
@@ -119,8 +122,8 @@ def parser(dom, A):
             process_depicted(A, url)
 
     # attempt at determining tags (used for catgories)
-    process_tags(A, dom, 'item_classes', 'ns5:itemClassName')
-    process_tags(A, dom, 'item_keywords', 'ns5:itemKeyWord')
+    process_tags(A, dom, 'item_classes', 'ns5:itemClassName', log)
+    process_tags(A, dom, 'item_keywords', 'ns5:itemKeyWord', log)
 
     # memory seems to be an issue so kill dom
     del dom, xmlTag
@@ -137,7 +140,7 @@ def parser(dom, A):
     return A
 
 
-def process_tags(entry, dom, label, xml_tag):
+def process_tags(entry, dom, label, xml_tag, log):
     """
     Process tags of a given type.
 
@@ -145,6 +148,7 @@ def process_tags(entry, dom, label, xml_tag):
     :param dom: the dom being analysed
     :param label: the label under which the processed tags should be stored
     :param xml_tag: the xml tag name to search for
+    :param log: log to write to
     """
     entry[label] = []
     elements = dom.getElementsByTagName(xml_tag)
@@ -153,7 +157,7 @@ def process_tags(entry, dom, label, xml_tag):
             entry[label].append(element.childNodes[0].data.strip())
         except IndexError:
             # Means data for this field was mising
-            print "Empty '{0}' in {1}".format(xml_tag, entry['ID'])
+            log.write("{0} -- Empty '{1}'".format(entry['ID'], xml_tag))
 
 
 def normalise_ids(entry):
@@ -291,18 +295,18 @@ def process_license(entry):
     entry['license_text'] = license_text
 
 
-def kmb_wrapper(idno):
+def kmb_wrapper(idno, log):
     """Get partially processed dataobject for a given kmb id."""
     A = {'ID': idno, 'problem': []}
     url = 'http://kulturarvsdata.se/raa/kmb/{0}'.format(idno)
     try:
         f = urllib2.urlopen(url)
     except urllib2.HTTPError as e:
-        A['problem'].append('{0}: {1}'.format(e, url))
-        print A['problem'][0]
+        A['problem'].append('{0} -- {1}: {2}'.format(idno, e, url))
+        log.write(A['problem'][0])
     else:
         dom = parse(f)
-        A = parser(dom, A)
+        A = parser(dom, A, log)
         f.close()
         del f
 
@@ -311,33 +315,33 @@ def kmb_wrapper(idno):
 
 def load_list(filename='kmb_hitlist.json'):
     """Load json list."""
-    f = codecs.open(filename, 'r', 'utf-8')
-    data = json.load(f)
-    f.close()
-    return data
+    return common.open_and_read_file(filename, as_json=True)
 
 
 def output_blob(data, filename='kmb_data.json'):
-    """Dump data as jon blob."""
-    f = codecs.open(filename, 'w', 'utf-8')
-    f.write(json.dumps(data, indent=2, ensure_ascii=False))
-    print "%s created" % filename
+    """Dump data as json blob."""
+    common.open_and_write_file(filename, data, as_json=True)
+    pywikibot.output('{0} created'.format(filename))
 
 
 def run(start=None, end=None):
     """Get parsed data for whole kmb hitlist and store as json."""
+    log = common.LogFile('', LOGFILE)
     hitlist = load_list()
     if start or end:
         hitlist = hitlist[start:end]
     data = {}
     total_count = len(hitlist)
     for count, kmb in enumerate(hitlist):
-        data[kmb] = kmb_wrapper(kmb)
+        data[kmb] = kmb_wrapper(kmb, log)
         time.sleep(THROTTLE)
         if count % 100 == 0:
-            timestamp = time.strftime('%H:%M:%S')
-            print '%s - %d of %d parsed' % (timestamp, count, total_count)
+            pywikibot.output(
+                '{time:s} - {count:d} of {total:d} parsed'.format(
+                    time=time.strftime('%H:%M:%S'), count=count,
+                    total=total_count))
     output_blob(data)
+    pywikibot.output(log.close_and_confirm())
 
 
 if __name__ == "__main__":
