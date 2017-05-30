@@ -619,7 +619,7 @@ class KMBItem(object):
                 found_commonscat = True
                 self.content_cats.add(commonscat_map['bbr'][bbr_id]['cat'])
             else:
-                self.content_cats.add('Listed buildings in Sweden')
+                self.make_default_bbr_category(cache)
 
         if found_commonscat:
             self.needs_place_cat = False
@@ -637,24 +637,61 @@ class KMBItem(object):
 
         :param cache: cache for category existence
         """
-        test_cat = None
-        if self.kommunName:
-            test_cat = 'Archaeological monuments in {} Municipality'.format(
-                self.kommunName)
-            if not self.kmb_info.category_exists(test_cat, cache):
-                test_cat = 'Archaeological monuments in {}'.format(
-                    self.kommunName)
-                if not self.kmb_info.category_exists(test_cat, cache):
-                    test_cat = None
+        muni_cat = self.municipal_subcategory(
+            'Archaeological monuments', cache)
 
-        if test_cat:
+        if muni_cat:
             self.needs_place_cat = False
-            self.content_cats.add(test_cat)
+            self.content_cats.add(muni_cat)
         else:
             self.content_cats.add(
-                'Archaeological monuments in %s' % self.landskap)
+                'Archaeological monuments in {}'.format(self.landskap))
             self.content_cats.add(
-                'Archaeological monuments in %s County' % self.lan)
+                'Archaeological monuments in {} County'.format(self.lan))
+
+    def make_default_bbr_category(self, cache):
+        """
+        Set BBR default categories based on municipality.
+
+        Makes a guess for the category name. If not found it defaults to
+        County (Län) category.
+
+        Populates self.content_cats and modifies self.needs_place_cat.
+
+        :param cache: cache for category existence
+        """
+        muni_cat = self.municipal_subcategory('Listed buildings', cache)
+
+        if muni_cat:
+            self.needs_place_cat = False
+            self.content_cats.add(muni_cat)
+        else:
+            test_cat = 'Listed buildings in {} County'.format(self.lan)
+            if self.kmb_info.category_exists(test_cat, cache):
+                self.content_cats.add(test_cat)
+            else:
+                # @todo: add an entry to the log here
+                self.content_cats.add('Listed buildings in Sweden')
+
+    def municipal_subcategory(self, cat_base, cache):
+        """
+        Find a suitable subcategory on municipality level for a category stem.
+
+        :param cat_base: the base name/stem of the category
+            e.g. "Listed buildings"
+        :param cache: cache for category existence
+        :return: a successful category match or None
+        """
+        test_cat = None
+        if self.kommunName:
+            test_cat = '{cat_base} in {muni} Municipality'.format(
+                cat_base=cat_base, muni=self.kommunName)
+            if not self.kmb_info.category_exists(test_cat, cache):
+                test_cat = '{cat_base} in {}'.format(
+                    cat_base=cat_base, muni=self.kommunName)
+                if not self.kmb_info.category_exists(test_cat, cache):
+                    test_cat = None
+        return test_cat
 
     def make_item_class_categories(self, cache):
         """
