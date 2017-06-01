@@ -302,8 +302,9 @@ def kmb_wrapper(idno, log):
     try:
         f = urllib2.urlopen(url)
     except urllib2.HTTPError as e:
-        A['problem'].append('{0} -- {1}: {2}'.format(idno, e, url))
-        log.write(A['problem'][0])
+        error_message = '{1}: {2}'.format(e, url)
+        A['problem'].append(error_message)
+        log.write('{0} -- {1}'.format(idno, error_message))
     else:
         dom = parse(f)
         A = parser(dom, A, log)

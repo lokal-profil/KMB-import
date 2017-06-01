@@ -696,7 +696,7 @@ class KMBItem(object):
             test_cat = '{cat_base} in {muni} Municipality'.format(
                 cat_base=cat_base, muni=self.kommunName)
             if not self.kmb_info.category_exists(test_cat, cache):
-                test_cat = '{cat_base} in {}'.format(
+                test_cat = '{cat_base} in {muni}'.format(
                     cat_base=cat_base, muni=self.kommunName)
                 if not self.kmb_info.category_exists(test_cat, cache):
                     test_cat = None
