@@ -393,7 +393,8 @@ class KMBInfo(MakeBaseInfo):
         :param item: the metadata for the media file in question
         :return: str
         """
-        return helpers.format_filename(item.get_description(), 'KMB', item.ID)
+        return helpers.format_filename(
+            item.get_title_description(), 'KMB', item.ID)
 
     def make_info_template(self, item):
         """
@@ -405,7 +406,7 @@ class KMBInfo(MakeBaseInfo):
         template_name = 'Kulturmiljöbild-image'
         template_data = OrderedDict()
         template_data['short title'] = item.namn
-        template_data['original description'] = item.beskrivning
+        template_data['original description'] = item.get_original_description()
         template_data['wiki description'] = item.get_wiki_description()
         template_data['photographer'] = item.get_photographer()
         template_data['depicted place'] = item.get_depicted_place()
@@ -473,7 +474,7 @@ class KMBInfo(MakeBaseInfo):
         # problem cats
         if not content_cats:
             cats.add(self.make_maintenance_cat('needing categorisation'))
-        # if not item.get_description():
+        # if not item.get_title_description():
         #     cats.append(self.make_maintenance_cat('add description'))
 
         # creator cats are classified as meta
@@ -575,6 +576,7 @@ class KMBItem(object):
         """
         Generate the wikitext description.
 
+        * self.beskrivning is a free-text description of the image.
         * self.motiv is either the same as the name or a free-text description
             of what the image depicts.
         * self.avbildar is a list of wikitext templates (bbr, fmis, shm) which
@@ -582,18 +584,32 @@ class KMBItem(object):
 
         :return: str
         """
-        wiki_description = ''
-        if self.motiv != self.namn:
-            wiki_description = self.motiv + ' '
+        wiki_description = '{}.'.format(self.beskrivning.rstrip(' .'))
+        if (self.motiv != self.namn) and (self.motiv != self.beskrivning):
+            wiki_description += '\n{} '.format(self.motiv)
 
         if self.avbildar:
             wiki_description += ' '.join(self.avbildar)
 
         return wiki_description.strip()
 
+    def get_original_description(self):
+        """Generate original description incl. keywords and class(es)."""
+        descr = self.beskrivning
+
+        if self.item_keywords:
+            descr += '\nNyckelord: {}'.format(', '.join(self.item_keywords))
+
+        if self.item_classes:
+            # Otput the primary class, if identified, else output all
+            classes = self.isolate_primary_class() or self.item_classes
+            descr += '\Kategori: {}'.format(', '.join(common.listify(classes)))
+
+        return descr
+
     # @todo: construct a fallback for descriptions,
     #        and ensure meta cats tie in to this
-    def get_description(self):
+    def get_title_description(self):
         """Construct an appropriate description."""
         if self.namn:
             # handle problematic common colon in name
@@ -702,24 +718,38 @@ class KMBItem(object):
                     test_cat = None
         return test_cat
 
+    def isolate_primary_class(self):
+        """
+        Discover which, if any, of the item classes is the primary one.
+
+        If primary_classes contains (castle, runestone, chicken)
+        then:
+        * item_classes: (human construct, building, castle) returns castle
+        * item_classes: (human construct, building, church) returns None
+        * item_classes: (building, runestone, chicken) raises a warning and
+          returns None
+
+        :return: the matching class
+        """
+        primary_classes = self.kmb_info.mappings['primary_classes']
+        intersection = list(set(primary_classes) & set(self.item_classes))
+        if len(intersection) == 1:
+            return intersection[0]
+        elif len(intersection) > 1:
+            pywikibot.warning(
+                "Found {num} primary classes. Need to rethink the logic. "
+                "{idno}: '{primary}'".format(
+                    num=len(intersection), idno=self.ID,
+                    primary="', '".join(intersection)))
+
     def make_item_class_categories(self, cache):
         """
         Construct categories from the item class values.
 
         :param cache: cache for category existence
         """
-        primary_classes = self.kmb_info.mappings['primary_classes']
-
         # find the class/tag that is also in primary_classes
-        primary_tag = None
-        intersection = list(set(primary_classes) & set(self.item_classes))
-        if len(intersection) == 1:
-            primary_tag = intersection[0]
-        elif len(intersection) > 1:
-            pywikibot.warning(
-                "Found two primary classes. Need to rethink the logic. "
-                "{idno}: '{primary}'".format(
-                    idno=self.ID, primary="', '".join(intersection)))
+        primary_tag = self.isolate_primary_class()
 
         if not primary_tag or not self.add_single_tag(primary_tag, cache):
             for tag in self.item_classes:
