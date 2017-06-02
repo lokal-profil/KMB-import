@@ -109,7 +109,7 @@ def parser(dom, A, log):
             A['latitude'] = coords[1][:8]
             A['longitude'] = coords[0][:8]
         else:
-            A['problem'].append("Coord was not a point: '{0}'".format(cs))
+            A['problem'].append('Coord was not a point: "{0}"'.format(cs))
 
     # do ns5:visualizes separately
     A['bbr'] = set()
@@ -157,7 +157,7 @@ def process_tags(entry, dom, label, xml_tag, log):
             entry[label].append(element.childNodes[0].data.strip())
         except IndexError:
             # Means data for this field was mising
-            log.write("{0} -- Empty '{1}'".format(entry['ID'], xml_tag))
+            log.write('{0} -- Empty "{1}"'.format(entry['ID'], xml_tag))
 
 
 def normalise_ids(entry):
@@ -205,8 +205,8 @@ def process_depicted(entry, url):
         if url.startswith(pattern):
             if idno != url[len(pattern):].strip():
                 raise ValueError(
-                    "Depicted started with '{0}' but idno has wrong "
-                    "format: {1}".format(pattern, url))
+                    'Depicted started with "{0}" but idno has wrong '
+                    'format: {1}'.format(pattern, url))
             entry[template.template_type].add(idno)
             avbildar = template.output()
             break
@@ -290,7 +290,7 @@ def process_license(entry):
     else:
         entry['problem'].append(
             "It looks like the license isn't free. "
-            "Copyright='{0}', License='{1}'.".format(
+            'Copyright="{0}", License="{1}".'.format(
                 entry['copyright'], entry['license']))
     entry['license_text'] = license_text
 
@@ -345,5 +345,5 @@ def run(start=None, end=None):
     pywikibot.output(log.close_and_confirm())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     run()

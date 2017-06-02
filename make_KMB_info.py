@@ -332,7 +332,7 @@ class KMBInfo(MakeBaseInfo):
             namespace = '|'.join(namespace)
 
         g = pywikibot.data.api.ListGenerator(
-            "exturlusage", euquery=url, site=self.commons,
+            'exturlusage', euquery=url, site=self.commons,
             eunamespace=namespace, euprotocol=protocol, euprop='title|url')
         return g
 
@@ -737,8 +737,8 @@ class KMBItem(object):
             return intersection[0]
         elif len(intersection) > 1:
             pywikibot.warning(
-                "Found {num} primary classes. Need to rethink the logic. "
-                "{idno}: '{primary}'".format(
+                'Found {num} primary classes. Need to rethink the logic. '
+                '{idno}: "{primary}"'.format(
                     num=len(intersection), idno=self.ID,
                     primary="', '".join(intersection)))
 
@@ -830,7 +830,7 @@ class KMBItem(object):
                 (self.byline in photographer_map):
             creator = photographer_map[self.byline].get('creator')
             if creator:
-                photographer = 'Creator:{0}'.format(creator)
+                photographer = '{{Creator:%s}}' % creator
 
         return photographer or self.byline  # fallback on plain byline
 
@@ -849,7 +849,7 @@ class KMBItem(object):
         template = '{{Riksantikvarieämbetet cooperation project|coh}}'
         txt = ''
         if self.byline:
-            txt += '%s / ' % self.byline
+            txt += '{} / '.format(self.byline)
         txt += 'Kulturmiljöbild, Riksantikvarieämbetet'
         return '[{url} {link_text}]\n{template}'.format(
             url=self.source, link_text=txt, template=template)
@@ -897,9 +897,9 @@ class KMBItem(object):
                     depicted_place += ', {{city|%s}}' % self.wd['socken']
             else:
                 if self.lan:
-                    depicted_place += ', %s' % self.lan
+                    depicted_place += ', {}'.format(self.lan)
                 elif self.landskap:
-                    depicted_place += ', %s' % self.landskap
+                    depicted_place += ', {}'.format(self.landskap)
                 else:
                     self.meta_cats.add(
                         'needing categorisation (no municipality)')
@@ -910,5 +910,5 @@ class KMBItem(object):
         return depicted_place
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     KMBInfo.main()
