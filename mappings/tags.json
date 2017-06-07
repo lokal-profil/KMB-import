@@ -665,11 +665,6 @@
         "base": "Winter in {}",
         "SE": "Winter in Sweden"
     },
-    "Stadsmiljö": {
-        "default": "Cityscapes",
-        "base": "Cityscapes in {}",
-        "SE": "Cityscapes in Sweden"
-    },
     "Gravfält": {
         "default": "Necropolis",
         "base": "Necropolises in {}",
