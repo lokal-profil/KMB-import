@@ -22,7 +22,7 @@ from batchupload.make_info import MakeBaseInfo
 
 MAPPINGS_DIR = 'mappings'
 BATCH_CAT = 'Media contributed by RAÄ'  # stem for maintenance categories
-BATCH_DATE = '2017-05'  # branch for this particular batch upload
+BATCH_DATE = '2017-06'  # branch for this particular batch upload
 LOGFILE = 'kmb_processing.log'
 
 
@@ -50,8 +50,6 @@ class KMBInfo(MakeBaseInfo):
         """
         return common.open_and_read_file(in_file, as_json=True)
 
-    # @todo: Not all problems should necessarily result in skipping the image
-    #        completely. And some other issues possibly should - T164578
     def process_data(self, raw_data):
         """
         Take the loaded data and construct a KMBItem for each.
@@ -355,7 +353,8 @@ class KMBInfo(MakeBaseInfo):
         :return: dict with found data
         """
         props = props or ('id', 'commonscat', 'wd_item')
-        data = data or {}
+        if data is None:
+            data = {}
         base_url = 'https://tools.wmflabs.org/heritage/api/api.php?action=search&format=json&srwithcommonscat=1'  # noqa E501
         url = '{0}&srcountry={1}&props={2}'.format(
             base_url, dataset, '|'.join(props))
@@ -464,7 +463,7 @@ class KMBInfo(MakeBaseInfo):
         :param content_cats: any content categories for the file
         :return: list of categories (without "Category:" prefix)
         """
-        cats = item.meta_cats
+        cats = set([self.make_maintenance_cat(cat) for cat in item.meta_cats])
 
         # base cats
         # "Images from the Swedish National Heritage Board" already added by
@@ -584,28 +583,38 @@ class KMBItem(object):
 
         :return: str
         """
-        wiki_description = '{}.'.format(self.beskrivning.rstrip(' .'))
+        descr = self.beskrivning or ''
+        wiki_description = '{}.'.format(descr.rstrip(' .'))
         if (self.motiv != self.namn) and (self.motiv != self.beskrivning):
-            wiki_description += '\n{} '.format(self.motiv)
+            wiki_description += '\n{}. '.format(self.motiv.rstrip(' .'))
 
         if self.avbildar:
-            wiki_description += ' '.join(self.avbildar)
+            wiki_description += '\n{}'.format(' '.join(self.avbildar))
 
         return wiki_description.strip()
 
     def get_original_description(self):
-        """Generate original description incl. keywords and class(es)."""
-        descr = self.beskrivning
+        """Get original description incl. motif, keywords and class(es)."""
+        descr = self.beskrivning or ''
+
+        if self.motiv:
+            descr += '<br>\n''Motiv'': {}'.format(self.motiv)
 
         if self.item_keywords:
-            descr += '\nNyckelord: {}'.format(', '.join(self.item_keywords))
+            descr += '<br>\n''Nyckelord'': {}'.format(
+                ', '.join(self.item_keywords))
 
         if self.item_classes:
-            # Otput the primary class, if identified, else output all
+            # Output the primary class, if identified, else output all
             classes = self.isolate_primary_class() or self.item_classes
-            descr += '\Kategori: {}'.format(', '.join(common.listify(classes)))
+            descr += '<br>\n''Kategori'': {}'.format(
+                ', '.join(common.listify(classes)))
 
-        return descr
+        descr = descr.strip()
+        if descr.startswith('<br>'):
+            descr = descr[len('<br>'):]
+
+        return descr.strip()
 
     # @todo: construct a fallback for descriptions,
     #        and ensure meta cats tie in to this
@@ -662,7 +671,7 @@ class KMBItem(object):
         :param cache: cache for category existence
         """
         muni_cat = self.municipal_subcategory(
-            'Archaeological monuments', cache)
+            'Archaeological monuments in {}', cache)
 
         if muni_cat:
             self.needs_place_cat = False
@@ -684,7 +693,7 @@ class KMBItem(object):
 
         :param cache: cache for category existence
         """
-        muni_cat = self.municipal_subcategory('Listed buildings', cache)
+        muni_cat = self.municipal_subcategory('Listed buildings in {}', cache)
 
         if muni_cat:
             self.needs_place_cat = False
@@ -702,18 +711,17 @@ class KMBItem(object):
         """
         Find a suitable subcategory on municipality level for a category stem.
 
-        :param cat_base: the base name/stem of the category
-            e.g. "Listed buildings"
+        :param cat_base: the base name/stem of the category. Provided as a
+            format string with one unnamed field. E.g. "Listed buildings in {}"
         :param cache: cache for category existence
         :return: a successful category match or None
         """
         test_cat = None
         if self.kommunName:
-            test_cat = '{cat_base} in {muni} Municipality'.format(
-                cat_base=cat_base, muni=self.kommunName)
+            test_cat = cat_base.format(
+                '{muni} Municipality'.format(muni=self.kommunName))
             if not self.kmb_info.category_exists(test_cat, cache):
-                test_cat = '{cat_base} in {muni}'.format(
-                    cat_base=cat_base, muni=self.kommunName)
+                test_cat = cat_base.format(self.kommunName)
                 if not self.kmb_info.category_exists(test_cat, cache):
                     test_cat = None
         return test_cat
@@ -795,13 +803,12 @@ class KMBItem(object):
             if (not self.land or self.land == 'SE') and tag_map[tag].get('SE'):
                 cat = tag_map[tag].get('SE')
 
-                # attempt municipal categorisation
-                if self.kommunName:
-                    test_cat = tag_map[tag].get('SE').replace(
-                        'Sweden', '{} Municipality'.format(self.kommunName))
-                    if self.kmb_info.category_exists(test_cat, cache):
-                        self.needs_place_cat = False
-                        cat = test_cat
+                # attempt municipal subcategorisation
+                cat_base = cat.replace('Sweden', '{}')
+                test_cat = self.municipal_subcategory(cat_base, cache)
+                if test_cat:
+                    self.needs_place_cat = False
+                    cat = test_cat
             elif self.land in country_map and tag_map[tag].get('base'):
                 test_cat = tag_map[tag].get('base').format(
                     country_map(self.land))

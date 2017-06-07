@@ -1,5 +1,5 @@
 {
-    "@meta": "Extracted from https://commons.wikimedia.org/w/index.php?title=Institution:Riksantikvarie%C3%A4mbetet/KMB/tags&oldid=243513409",
+    "@meta": "Extracted from https://commons.wikimedia.org/w/index.php?title=Institution:Riksantikvarie%C3%A4mbetet/KMB/tags&oldid=246908523",
     "Metallframställning och bergsbruk": {
         "default": "Metalwork",
         "base": "Metalwork in {}",
@@ -232,8 +232,8 @@
     },
     "Riksintressen": {
         "default": null,
-        "base": "Area of national interest for cultural heritage in {}",
-        "SE": "Area of national interest for cultural heritage in Sweden"
+        "base": "Areas of national interest for cultural heritage in {}",
+        "SE": "Areas of national interest for cultural heritage in Sweden"
     },
     "Byggnad annan": {
         "default": "Buildings to be categorised by country",
@@ -1004,5 +1004,10 @@
         "default": "Stone ships",
         "base": "Stone ships in {}",
         "SE": "Stone ships in Sweden"
+    },
+    "Träindustri": {
+        "default": "Wood-processing industry",
+        "base": "Wood-processing industry in {}",
+        "SE": "Wood-processing industry in Sweden"
     }
 }
