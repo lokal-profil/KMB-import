@@ -673,14 +673,17 @@ class KMBItem(object):
         muni_cat = self.municipal_subcategory(
             'Archaeological monuments in {}', cache)
 
+        # add the modern subdivision
         if muni_cat:
             self.needs_place_cat = False
             self.content_cats.add(muni_cat)
         else:
             self.content_cats.add(
-                'Archaeological monuments in {}'.format(self.landskap))
-            self.content_cats.add(
                 'Archaeological monuments in {} County'.format(self.lan))
+
+        # add the historical subdivision
+        self.content_cats.add(
+            'Archaeological monuments in {}'.format(self.landskap))
 
     def make_default_bbr_category(self, cache):
         """
