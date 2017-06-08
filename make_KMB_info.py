@@ -106,6 +106,7 @@ class KMBInfo(MakeBaseInfo):
             KMBInfo.get_commonscat_from_heritage(
                 'se-fornmin', limit=1000,
                 data=self.mappings['commonscat']['fmis'])
+            self.load_wikidata_bbr_fmis_commonscat()
 
             # dump to mappings
             common.open_and_write_file(
@@ -137,6 +138,8 @@ class KMBInfo(MakeBaseInfo):
             tags_file, as_json=True)
         self.mappings['primary_classes'] = common.open_and_read_file(
             primary_classes_file, as_json=True)
+
+        pywikibot.output('Loaded all mappings')
 
     def get_photographer_mapping(self, photographer_page):
         """
@@ -170,6 +173,31 @@ class KMBInfo(MakeBaseInfo):
             photographers[name] = self.load_wd_value(
                 qid, photographer_props, self.photographer_cache)
         return photographers
+
+    def load_wikidata_bbr_fmis_commonscat(self):
+        """
+        Load all bbr/fmis entries in Wikidata and add any commonscats.
+
+        Overrides any mappings found in heritage.
+        """
+        query_props = {'P373': 'commonscat'}
+        mapped_data = self.mappings['commonscat']
+        data = KMBInfo.query_to_lookup(
+            KMBInfo.build_query('P1260', optional_props=query_props.keys()),
+            props=query_props)
+
+        for k, v in data.iteritems():
+            if v.get('commonscat'):
+                entry = {'wd': v.get('wd'), 'cat': v.get('commonscat')}
+
+                prefix, _, idno = k.rpartition('/')
+                if prefix.endswith('/html'):
+                    prefix = prefix[:-len('/html')]
+
+                if prefix == 'raa/fmi':
+                    mapped_data['fmis'][idno] = entry
+                elif prefix in ('raa/bbra', 'raa/bbrb', 'raa/bbr', 'raa/bbrm'):
+                    mapped_data['bbr'][idno] = entry
 
     # @todo:move to BatchUploadTools?
     @staticmethod
