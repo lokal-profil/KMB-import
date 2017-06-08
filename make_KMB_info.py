@@ -733,25 +733,17 @@ class KMBItem(object):
         """
         Discover which, if any, of the item classes is the primary one.
 
-        If primary_classes contains (castle, runestone, chicken)
-        then:
-        * item_classes: (human construct, building, castle) returns castle
-        * item_classes: (human construct, building, church) returns None
-        * item_classes: (building, runestone, chicken) raises a warning and
-          returns None
+        If primary_classes contains (castle, runestone, chicken) then:
+        * item_classes: (human construct, building, castle) returns [castle]
+        * item_classes: (human construct, building, church) returns []
+        * item_classes: (building, castle, animal, chicken) returns
+            [castle, chicken]
 
         :return: the matching class
         """
         primary_classes = self.kmb_info.mappings['primary_classes']
         intersection = list(set(primary_classes) & set(self.item_classes))
-        if len(intersection) == 1:
-            return intersection[0]
-        elif len(intersection) > 1:
-            pywikibot.warning(
-                'Found {num} primary classes. Need to rethink the logic. '
-                '{idno}: "{primary}"'.format(
-                    num=len(intersection), idno=self.ID,
-                    primary="', '".join(intersection)))
+        return intersection
 
     def make_item_class_categories(self, cache):
         """
@@ -759,13 +751,15 @@ class KMBItem(object):
 
         :param cache: cache for category existence
         """
-        # find the class/tag that is also in primary_classes
-        primary_tag = self.isolate_primary_class()
+        # find the class/tag(s) that are also in primary_classes
+        primary_tags = self.isolate_primary_class()
 
-        if not primary_tag or not self.add_single_tag(primary_tag, cache):
+        if not primary_tags or \
+                not all(self.add_single_tag(primary_tag, cache)
+                        for primary_tag in primary_tags):
+            # unless all primary tags were found, add all classes
             for tag in self.item_classes:
-                if tag != primary_tag:
-                    self.add_single_tag(tag, cache)
+                self.add_single_tag(tag, cache)
 
     def make_item_keyword_categories(self, cache):
         """
