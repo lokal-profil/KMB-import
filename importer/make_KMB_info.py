@@ -293,8 +293,7 @@ class KMBInfo(MakeBaseInfo):
 
     def get_existing_kmb_files(self):
         """
-        Load all files on commons which contain recognisable external links to
-        specific KMB images.
+        Load Commons files with external links to specific KMB images.
 
         Filenames include the 'File:' prefix.
 
@@ -584,8 +583,7 @@ class KMBItem(object):
 
     def get_other_versions(self):
         """
-        Build a gallery of all images already on Commons which depict
-        (or link to) the same KMB image.
+        Build a gallery of Commons files that depict/link to the same KMB img.
 
         :return: str
         """
