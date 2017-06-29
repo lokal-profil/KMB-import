@@ -1,0 +1,25 @@
+# source data files
+*.doc
+*.docx
+*.json
+*.csv
+*.xls
+*.xlsx
+*.tsv
+*.ods
+
+# output files
+*.wiki
+*.info
+*.log
+
+# CI
+.coverage
+.tox
+
+# pywikibot
+*secretPasswords
+user-config.py
+*.ctrl
+*.lwp
+apicache
