@@ -15,7 +15,6 @@ from xml.dom.minidom import parseString
 from collections import OrderedDict
 import time
 
-import batchupload.helpers as helpers
 import batchupload.common as common
 from kmb_massload import parser
 
@@ -65,7 +64,8 @@ def split_records(dom):
 
 def parse_record(dom, record_dict, log):
     """Parse and process the xml metadata into a dict."""
-    return parser(dom, record_dict, log)
+    record_dict = parser(dom, record_dict, log)
+    return OrderedDict(sorted(record_dict.items()))
 
 
 def get_records_from_url(url):
