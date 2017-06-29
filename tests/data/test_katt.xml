@@ -1,0 +1,1619 @@
+<result>
+<version>1.0</version>
+<totalHits>14</totalHits>
+<records>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300028666">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Bondgård</ns5:itemClassName>
+<ns5:itemClassName>Byggnadsverk</ns5:itemClassName>
+<ns5:itemClassName>Jordbruk</ns5:itemClassName>
+<ns5:itemKeyWord>Byggnadsminnen</ns5:itemKeyWord>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Kumlatofta</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300028666</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300028666</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>f0009418</pres:idLabel>
+<pres:itemLabel>Kumlatofta</pres:itemLabel>
+<pres:tag>Byggnadsminnen</pres:tag>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Katt på trappan.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Skåne, Kommun: Sjöbo, Landskap: Skåne, Socken: Everlöv</pres:placeLabel>
+<pres:timeLabel>2000-08-23 - 2000-08-23</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Kumlatofta</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300028666</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300028666</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300028666</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300028666</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>f0009418</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Katt på trappan.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Skåne</ns5:countyName>
+<ns5:fromTime>2000-08-23</ns5:fromTime>
+<ns5:municipalityName>Sjöbo</ns5:municipalityName>
+<ns5:parishName>Everlöv</ns5:parishName>
+<ns5:provinceName>Skåne</ns5:provinceName>
+<ns5:toTime>2000-08-23</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#12"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1265"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1215"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sk"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Bondgård</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Kumlatofta</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300028666">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000372297">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2012-02-16</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Byggnadsverk</ns5:itemClassName>
+<ns5:itemClassName>Park</ns5:itemClassName>
+<ns5:itemClassName>Parker och trädgårdar</ns5:itemClassName>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Halmstad</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2012-02-16</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16001000372297</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16001000372297</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>ac00666</pres:idLabel>
+<pres:itemLabel>Halmstad</pres:itemLabel>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Parti av Norre Katts park.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Halland, Kommun: Halmstad, Landskap: Halland, Socken: Halmstad</pres:placeLabel>
+<pres:timeLabel>1940-01-01 - 1959-12-31</pres:timeLabel>
+<pres:nameLabel>Okänd, Okänd</pres:nameLabel>
+</pres:context>
+<georss:where xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">12.8603486678931,56.6787821944768</gml:coordinates>
+</gml:Point>
+</georss:where>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16001000372297/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16001000372297/thumbnail/1.jpg</pres:src>
+<pres:byline>Okänd, Okänd</pres:byline>
+<pres:motive>Halmstad</pres:motive>
+<pres:copyright>Utgången upphovsrätt</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16001000372297</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16001000372297</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16001000372297</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16001000372297/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16001000372297</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>ac00666</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Parti av Norre Katts park.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Vykort</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:coordinates rdf:parseType="Literal" xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">12.8603486678931,56.6787821944768</gml:coordinates>
+</gml:Point>
+</ns5:coordinates>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Halland</ns5:countyName>
+<ns5:fromTime>1940-01-01</ns5:fromTime>
+<ns5:municipalityName>Halmstad</ns5:municipalityName>
+<ns5:parishName>Halmstad</ns5:parishName>
+<ns5:provinceName>Halland</ns5:provinceName>
+<ns5:toTime>1959-12-31</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#13"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1380"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1456"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Ha"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Okänd, Okänd</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Okänd, Okänd</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000372297/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/publicdomain/mark/1.0/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Halmstad</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Park</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000372297/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000372297">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000372300">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2012-02-16</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Byggnadsverk</ns5:itemClassName>
+<ns5:itemClassName>Park</ns5:itemClassName>
+<ns5:itemClassName>Parker och trädgårdar</ns5:itemClassName>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Halmstad</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2012-02-16</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16001000372300</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16001000372300</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>ac00667</pres:idLabel>
+<pres:itemLabel>Halmstad</pres:itemLabel>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Parti av Norre Katts park.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Halland, Kommun: Halmstad, Landskap: Halland, Socken: Halmstad</pres:placeLabel>
+<pres:timeLabel>1940-01-01 - 1959-12-31</pres:timeLabel>
+<pres:nameLabel>Okänd, Okänd</pres:nameLabel>
+</pres:context>
+<georss:where xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">12.8958320954549,56.6900536953306</gml:coordinates>
+</gml:Point>
+</georss:where>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16001000372300/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16001000372300/thumbnail/1.jpg</pres:src>
+<pres:byline>Okänd, Okänd</pres:byline>
+<pres:motive>Halmstad</pres:motive>
+<pres:copyright>Utgången upphovsrätt</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16001000372300</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16001000372300</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16001000372300</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16001000372300/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16001000372300</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>ac00667</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Parti av Norre Katts park.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Vykort</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:coordinates rdf:parseType="Literal" xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">12.8958320954549,56.6900536953306</gml:coordinates>
+</gml:Point>
+</ns5:coordinates>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Halland</ns5:countyName>
+<ns5:fromTime>1940-01-01</ns5:fromTime>
+<ns5:municipalityName>Halmstad</ns5:municipalityName>
+<ns5:parishName>Halmstad</ns5:parishName>
+<ns5:provinceName>Halland</ns5:provinceName>
+<ns5:toTime>1959-12-31</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#13"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1380"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1456"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Ha"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Okänd, Okänd</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Okänd, Okänd</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000372300/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/publicdomain/mark/1.0/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Halmstad</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Park</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000372300/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000372300">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035204">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Förortsmiljö</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemClassName>Villastad/villasamhälle</ns5:itemClassName>
+<ns5:itemLabel>Tyresö</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300035204</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300035204</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>fd925413</pres:idLabel>
+<pres:itemLabel>Tyresö</pres:itemLabel>
+<pres:description>Nyfiken katt i området Lindalen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Tyresö, Landskap: Södermanland, Socken: Tyresö</pres:placeLabel>
+<pres:timeLabel>1992-06-01 - 1992-06-01</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300035204/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300035204/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Tyresö</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300035204</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300035204</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300035204</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300035204/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300035204</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>fd925413</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Nyfiken katt i området Lindalen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:fromTime>1992-06-01</ns5:fromTime>
+<ns5:municipalityName>Tyresö</ns5:municipalityName>
+<ns5:parishName>Tyresö</ns5:parishName>
+<ns5:provinceName>Södermanland</ns5:provinceName>
+<ns5:toTime>1992-06-01</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0138"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#103"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sö"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035204/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Tyresö</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Villastad/villasamhälle</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035204/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035204">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035205">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Förortsmiljö</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemClassName>Villastad/villasamhälle</ns5:itemClassName>
+<ns5:itemLabel>Tyresö</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300035205</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300035205</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>fd925430</pres:idLabel>
+<pres:itemLabel>Tyresö</pres:itemLabel>
+<pres:description>Nyfiken katt i området Lindalen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Tyresö, Landskap: Södermanland, Socken: Tyresö</pres:placeLabel>
+<pres:timeLabel>1992-06-01 - 1992-06-01</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Tyresö</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300035205</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300035205</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300035205</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300035205</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>fd925430</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Nyfiken katt i området Lindalen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:fromTime>1992-06-01</ns5:fromTime>
+<ns5:municipalityName>Tyresö</ns5:municipalityName>
+<ns5:parishName>Tyresö</ns5:parishName>
+<ns5:provinceName>Södermanland</ns5:provinceName>
+<ns5:toTime>1992-06-01</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0138"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#103"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sö"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Tyresö</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Villastad/villasamhälle</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035205">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300028656">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Bondgård</ns5:itemClassName>
+<ns5:itemClassName>Byggnadsverk</ns5:itemClassName>
+<ns5:itemClassName>Jordbruk</ns5:itemClassName>
+<ns5:itemKeyWord>Byggnadsminnen</ns5:itemKeyWord>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Kumlatofta</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300028656</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300028656</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>f0009409</pres:idLabel>
+<pres:itemLabel>Kumlatofta</pres:itemLabel>
+<pres:tag>Byggnadsminnen</pres:tag>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Katt på gårdsplanen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Skåne, Kommun: Sjöbo, Landskap: Skåne, Socken: Everlöv</pres:placeLabel>
+<pres:timeLabel>2000-08-23 - 2000-08-23</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300028656/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300028656/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Kumlatofta</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300028656</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300028656</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300028656</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300028656/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300028656</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>f0009409</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Katt på gårdsplanen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Skåne</ns5:countyName>
+<ns5:fromTime>2000-08-23</ns5:fromTime>
+<ns5:municipalityName>Sjöbo</ns5:municipalityName>
+<ns5:parishName>Everlöv</ns5:parishName>
+<ns5:provinceName>Skåne</ns5:provinceName>
+<ns5:toTime>2000-08-23</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#12"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1265"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1215"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sk"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300028656/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Bondgård</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Kumlatofta</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300028656/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300028656">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300028662">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Bondgård</ns5:itemClassName>
+<ns5:itemClassName>Byggnadsverk</ns5:itemClassName>
+<ns5:itemClassName>Jordbruk</ns5:itemClassName>
+<ns5:itemKeyWord>Byggnadsminnen</ns5:itemKeyWord>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Kumlatofta</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300028662</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300028662</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>f0009415</pres:idLabel>
+<pres:itemLabel>Kumlatofta</pres:itemLabel>
+<pres:tag>Byggnadsminnen</pres:tag>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Katt på gårdsplanen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Skåne, Kommun: Sjöbo, Landskap: Skåne, Socken: Everlöv</pres:placeLabel>
+<pres:timeLabel>2000-08-23 - 2000-08-23</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300028662/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300028662/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Kumlatofta</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300028662</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300028662</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300028662</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300028662/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300028662</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>f0009415</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Katt på gårdsplanen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Skåne</ns5:countyName>
+<ns5:fromTime>2000-08-23</ns5:fromTime>
+<ns5:municipalityName>Sjöbo</ns5:municipalityName>
+<ns5:parishName>Everlöv</ns5:parishName>
+<ns5:provinceName>Skåne</ns5:provinceName>
+<ns5:toTime>2000-08-23</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#12"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1265"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1215"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sk"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300028662/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Bondgård</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Kumlatofta</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300028662/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300028662">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035201">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Förortsmiljö</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemClassName>Villastad/villasamhälle</ns5:itemClassName>
+<ns5:itemLabel>Tyresö</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300035201</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300035201</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>fd925514</pres:idLabel>
+<pres:itemLabel>Tyresö</pres:itemLabel>
+<pres:description>Nyfiken katt i området Lindalen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Tyresö, Landskap: Södermanland, Socken: Tyresö</pres:placeLabel>
+<pres:timeLabel>1992-06-01 - 1992-06-01</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300035201/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300035201/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Tyresö</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300035201</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300035201</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300035201</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300035201/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300035201</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>fd925514</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Nyfiken katt i området Lindalen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:fromTime>1992-06-01</ns5:fromTime>
+<ns5:municipalityName>Tyresö</ns5:municipalityName>
+<ns5:parishName>Tyresö</ns5:parishName>
+<ns5:provinceName>Södermanland</ns5:provinceName>
+<ns5:toTime>1992-06-01</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0138"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#103"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sö"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035201/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Tyresö</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Villastad/villasamhälle</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035201/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035201">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300030899">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Förortsmiljö</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemClassName>Villastad/villasamhälle</ns5:itemClassName>
+<ns5:itemLabel>Tyresö</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300030899</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300030899</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>fd925513</pres:idLabel>
+<pres:itemLabel>Tyresö</pres:itemLabel>
+<pres:description>Nyfiken katt i området Lindalen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Tyresö, Landskap: Södermanland, Socken: Tyresö</pres:placeLabel>
+<pres:timeLabel>1992-06-01 - 1992-06-01</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300030899/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300030899/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Tyresö</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300030899</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300030899</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300030899</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300030899/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300030899</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>fd925513</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Nyfiken katt i området Lindalen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:fromTime>1992-06-01</ns5:fromTime>
+<ns5:municipalityName>Tyresö</ns5:municipalityName>
+<ns5:parishName>Tyresö</ns5:parishName>
+<ns5:provinceName>Södermanland</ns5:provinceName>
+<ns5:toTime>1992-06-01</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0138"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#103"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sö"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300030899/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Tyresö</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Villastad/villasamhälle</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300030899/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300030899">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000289764">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2011-03-14</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Djur</ns5:itemClassName>
+<ns5:itemClassName>Personer</ns5:itemClassName>
+<ns5:itemClassName>Övrigt</ns5:itemClassName>
+<ns5:itemLabel>Åslunda</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2011-05-06</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16001000289764</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16001000289764</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>EE0043</pres:idLabel>
+<pres:itemLabel>Åslunda</pres:itemLabel>
+<pres:description>Lantbrukaren J. Johansson, 70 år, med en katt.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Sigtuna, Landskap: Uppland, Socken: Odensala</pres:placeLabel>
+<pres:nameLabel>Erici, Einar</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16001000289764/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16001000289764/thumbnail/1.jpg</pres:src>
+<pres:byline>Erici, Einar</pres:byline>
+<pres:motive>Åslunda</pres:motive>
+<pres:copyright>Utgången upphovsrätt</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16001000289764</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16001000289764</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16001000289764</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16001000289764/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16001000289764</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>EE0043</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Lantbrukaren J. Johansson, 70 år, med en katt.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:municipalityName>Sigtuna</ns5:municipalityName>
+<ns5:parishName>Odensala</ns5:parishName>
+<ns5:provinceName>Uppland</ns5:provinceName>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0191"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#64"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Up"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Erici, Einar</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:byline>Erici, Einar</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000289764/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/publicdomain/mark/1.0/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Personer, Djur</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Åslunda</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000289764/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000289764">
+<ns5:context rdf:nodeID="bNode_2"/>
+<ns5:image rdf:nodeID="bNode_3"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000331944">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2011-11-01</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName/>
+<ns5:itemClassName>Byggnadsverk</ns5:itemClassName>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Halmstad</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2011-11-01</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16001000331944</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16001000331944</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>ac00643</pres:idLabel>
+<pres:itemLabel>Halmstad</pres:itemLabel>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Ryggåsstugan, Norre Katt.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Halland, Kommun: Halmstad, Landskap: Halland, Socken: Halmstad</pres:placeLabel>
+<pres:timeLabel>1920-01-01 - 1959-12-31</pres:timeLabel>
+<pres:nameLabel>Nilsson, Otto</pres:nameLabel>
+</pres:context>
+<georss:where xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">12.8570066611659,56.6617403186212</gml:coordinates>
+</gml:Point>
+</georss:where>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16001000331944/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16001000331944/thumbnail/1.jpg</pres:src>
+<pres:byline>Nilsson, Otto</pres:byline>
+<pres:motive>Halmstad</pres:motive>
+<pres:copyright>Utgången upphovsrätt</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16001000331944</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16001000331944</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16001000331944</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16001000331944/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16001000331944</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>ac00643</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Ryggåsstugan, Norre Katt.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Vykort</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:coordinates rdf:parseType="Literal" xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">12.8570066611659,56.6617403186212</gml:coordinates>
+</gml:Point>
+</ns5:coordinates>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Halland</ns5:countyName>
+<ns5:fromTime>1920-01-01</ns5:fromTime>
+<ns5:municipalityName>Halmstad</ns5:municipalityName>
+<ns5:parishName>Halmstad</ns5:parishName>
+<ns5:provinceName>Halland</ns5:provinceName>
+<ns5:toTime>1959-12-31</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#13"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1380"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1456"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Ha"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Nilsson, Otto</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Nilsson, Otto</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000331944/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/publicdomain/mark/1.0/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord/>
+<ns5:mediaMotiveWord>Halmstad</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000331944/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000331944">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035202">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Förortsmiljö</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemClassName>Villastad/villasamhälle</ns5:itemClassName>
+<ns5:itemLabel>Tyresö</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300035202</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300035202</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>fd925423</pres:idLabel>
+<pres:itemLabel>Tyresö</pres:itemLabel>
+<pres:description>Nyfiken katt i området Lindalen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Tyresö, Landskap: Södermanland, Socken: Tyresö</pres:placeLabel>
+<pres:timeLabel>1992-06-01 - 1992-06-01</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300035202/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300035202/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Tyresö</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300035202</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300035202</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300035202</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300035202/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300035202</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>fd925423</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Nyfiken katt i området Lindalen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:fromTime>1992-06-01</ns5:fromTime>
+<ns5:municipalityName>Tyresö</ns5:municipalityName>
+<ns5:parishName>Tyresö</ns5:parishName>
+<ns5:provinceName>Södermanland</ns5:provinceName>
+<ns5:toTime>1992-06-01</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0138"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#103"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sö"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035202/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Tyresö</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Villastad/villasamhälle</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035202/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035202">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035203">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2005-05-10</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Förortsmiljö</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemClassName>Villastad/villasamhälle</ns5:itemClassName>
+<ns5:itemLabel>Tyresö</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2005-05-10</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16000300035203</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16000300035203</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>fd925518</pres:idLabel>
+<pres:itemLabel>Tyresö</pres:itemLabel>
+<pres:description>Nyfiken katt i området Lindalen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Stockholm, Kommun: Tyresö, Landskap: Södermanland, Socken: Tyresö</pres:placeLabel>
+<pres:timeLabel>1992-06-01 - 1992-06-01</pres:timeLabel>
+<pres:nameLabel>Lundberg, Bengt A</pres:nameLabel>
+</pres:context>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16000300035203/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16000300035203/thumbnail/1.jpg</pres:src>
+<pres:byline>Lundberg, Bengt A</pres:byline>
+<pres:motive>Tyresö</pres:motive>
+<pres:copyright>RAÄ</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#by</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16000300035203</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16000300035203</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16000300035203</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16000300035203/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16000300035203</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>fd925518</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Nyfiken katt i området Lindalen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Bildarkivet</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Stockholm</ns5:countyName>
+<ns5:fromTime>1992-06-01</ns5:fromTime>
+<ns5:municipalityName>Tyresö</ns5:municipalityName>
+<ns5:parishName>Tyresö</ns5:parishName>
+<ns5:provinceName>Södermanland</ns5:provinceName>
+<ns5:toTime>1992-06-01</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#01"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#0138"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#103"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Sö"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Lundberg, Bengt A</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Lundberg, Bengt A</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035203/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#by</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/licenses/by/2.5/se/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Tyresö</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Villastad/villasamhälle</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16000300035203/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16000300035203">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.990931</rel:score>
+</record>
+<record>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://kulturarvsdata.se/ksamsok#" xmlns:ns6="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#" xmlns:ns7="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000016845">
+<ns5:buildDate>2017-06-21</ns5:buildDate>
+<ns5:createdDate>2007-05-02</ns5:createdDate>
+<ns5:dataQuality rdf:resource="http://kulturarvsdata.se/resurser/DataQuality#raw"/>
+<ns5:itemClassName>Bymiljö</ns5:itemClassName>
+<ns5:itemClassName>Fornminnen</ns5:itemClassName>
+<ns5:itemClassName>Grav markerad av rest sten/block</ns5:itemClassName>
+<ns5:itemClassName>Gravar</ns5:itemClassName>
+<ns5:itemClassName>Jordbruksby</ns5:itemClassName>
+<ns5:itemClassName>Miljöer</ns5:itemClassName>
+<ns5:itemKeyWord>Riksintressen</ns5:itemKeyWord>
+<ns5:itemLabel>Kalleberga</ns5:itemLabel>
+<ns5:itemLicense rdf:resource="http://kulturarvsdata.se/resurser/License#cc0"/>
+<ns5:itemLicenseUrl rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+<ns5:itemSuperType rdf:resource="http://kulturarvsdata.se/resurser/EntitySuperType#object"/>
+<ns5:itemType rdf:resource="http://kulturarvsdata.se/resurser/EntityType#photo"/>
+<ns5:ksamsokVersion>1.11</ns5:ksamsokVersion>
+<ns5:lastChangedDate>2014-01-17</ns5:lastChangedDate>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:presentation rdf:parseType="Literal" xmlns:georss="http://www.georss.org/georss" xmlns:pres="http://kulturarvsdata.se/presentation#">
+<pres:item>
+<pres:id>16001000016845</pres:id>
+<pres:entityUri>http://kulturarvsdata.se/raa/kmb/16001000016845</pres:entityUri>
+<pres:type>Foto</pres:type>
+<pres:idLabel>MS000379</pres:idLabel>
+<pres:itemLabel>Kalleberga</pres:itemLabel>
+<pres:tag>Riksintressen</pres:tag>
+<pres:description>Förhistorisk rest sten framför boningshus. I förgrunden en katt och en höna. En tvättlina hänger över stenen.</pres:description>
+<pres:context>
+<pres:placeLabel>Län: Blekinge, Kommun: Ronneby, Landskap: Blekinge, Socken: Ronneby</pres:placeLabel>
+<pres:timeLabel>1949-07-01 - 1949-07-31</pres:timeLabel>
+<pres:nameLabel>Sjöbeck, Mårten</pres:nameLabel>
+</pres:context>
+<georss:where xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">15.2959974827733,56.2465241174788</gml:coordinates>
+</gml:Point>
+</georss:where>
+<pres:image>
+<pres:src type="lowres">http://kmb.raa.se/cocoon/bild/raa-image/16001000016845/normal/1.jpg</pres:src>
+<pres:src type="thumbnail">http://kmb.raa.se/cocoon/bild/raa-image/16001000016845/thumbnail/1.jpg</pres:src>
+<pres:byline>Sjöbeck, Mårten</pres:byline>
+<pres:motive>Kalleberga</pres:motive>
+<pres:copyright>Utgången upphovsrätt</pres:copyright>
+<pres:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</pres:mediaLicense>
+</pres:image>
+<pres:representations>
+<pres:representation format="RDF">http://kulturarvsdata.se/raa/kmb/rdf/16001000016845</pres:representation>
+<pres:representation format="Presentation">http://kulturarvsdata.se/raa/kmb/xml/16001000016845</pres:representation>
+<pres:representation format="HTML">http://kulturarvsdata.se/raa/kmb/html/16001000016845</pres:representation>
+</pres:representations>
+<pres:organization>Riksantikvarieämbetet</pres:organization>
+<pres:organizationShort>RAÄ</pres:organizationShort>
+<pres:service>Kulturmiljöbild</pres:service>
+<pres:version>1.11</pres:version>
+<pres:buildDate>2017-06-21</pres:buildDate>
+</pres:item>
+</ns5:presentation>
+<ns5:serviceName>kmb</ns5:serviceName>
+<ns5:serviceOrganization>RAÄ</ns5:serviceOrganization>
+<ns5:subject rdf:resource="http://kulturarvsdata.se/resurser/Subject#culturalHistory"/>
+<ns5:thumbnail>http://kmb.raa.se/cocoon/bild/raa-image/16001000016845/thumbnail/1.jpg</ns5:thumbnail>
+<ns5:url>http://kmb.raa.se/cocoon/bild/show-image.html?id=16001000016845</ns5:url>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Entity"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_0">
+<ns5:number>MS000379</ns5:number>
+<ns5:type>Bildbeteckning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemNumber"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_1">
+<ns5:desc>Förhistorisk rest sten framför boningshus. I förgrunden en katt och en höna. En tvättlina hänger över stenen.</ns5:desc>
+<ns5:type>Beskrivning</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_2">
+<ns5:desc>Dokumentation</ns5:desc>
+<ns5:type>Fotosyfte</ns5:type>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#ItemDescription"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_3">
+<ns5:contextSuperType rdf:resource="http://kulturarvsdata.se/resurser/ContextSuperType#create"/>
+<ns5:contextType rdf:resource="http://kulturarvsdata.se/resurser/ContextType#produce"/>
+<ns5:coordinates rdf:parseType="Literal" xmlns:gml="http://www.opengis.net/gml">
+<gml:Point srsName="EPSG:4326">
+<gml:coordinates cs="," decimal="." ts=" ">15.2959974827733,56.2465241174788</gml:coordinates>
+</gml:Point>
+</ns5:coordinates>
+<ns5:country rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/country#se"/>
+<ns5:countyName>Blekinge</ns5:countyName>
+<ns5:fromTime>1949-07-01</ns5:fromTime>
+<ns5:municipalityName>Ronneby</ns5:municipalityName>
+<ns5:parishName>Ronneby</ns5:parishName>
+<ns5:provinceName>Blekinge</ns5:provinceName>
+<ns5:toTime>1949-07-31</ns5:toTime>
+<ns6:county rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/county#10"/>
+<ns6:municipality rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/municipality#1081"/>
+<ns6:parish rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/parish#1011"/>
+<ns6:province rdf:resource="http://kulturarvsdata.se/resurser/aukt/geo/province#Bl"/>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Context"/>
+<ns7:name>Sjöbeck, Mårten</ns7:name>
+</rdf:Description>
+<rdf:Description rdf:nodeID="bNode_4">
+<ns5:byline>Sjöbeck, Mårten</ns5:byline>
+<ns5:copyright>Riksantikvarieämbetet</ns5:copyright>
+<ns5:lowresSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000016845/normal/1.jpg</ns5:lowresSource>
+<ns5:mediaLicense>http://kulturarvsdata.se/resurser/License#pdmark</ns5:mediaLicense>
+<ns5:mediaLicenseUrl>http://creativecommons.org/publicdomain/mark/1.0/</ns5:mediaLicenseUrl>
+<ns5:mediaMotiveWord>Jordbruksby, Grav markerad av rest sten/block</ns5:mediaMotiveWord>
+<ns5:mediaMotiveWord>Kalleberga</ns5:mediaMotiveWord>
+<ns5:mediaType>image/jpeg</ns5:mediaType>
+<ns5:thumbnailSource>http://kmb.raa.se/cocoon/bild/raa-image/16001000016845/thumbnail/1.jpg</ns5:thumbnailSource>
+<rdf:type rdf:resource="http://kulturarvsdata.se/ksamsok#Image"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://kulturarvsdata.se/raa/kmb/16001000016845">
+<ns5:context rdf:nodeID="bNode_3"/>
+<ns5:image rdf:nodeID="bNode_4"/>
+<ns5:itemDescription rdf:nodeID="bNode_1"/>
+<ns5:itemDescription rdf:nodeID="bNode_2"/>
+<ns5:itemNumber rdf:nodeID="bNode_0"/>
+</rdf:Description>
+</rdf:RDF>
+<rel:score xmlns:rel="info:srw/extension/2/relevancy-1.0">3.7587104</rel:score>
+</record>
+</records>
+<echo>
+<method>search</method>
+<startRecord>1</startRecord>
+<hitsPerPage>20</hitsPerPage>
+<query>serviceOrganization=RAÄ and serviceName=KMB and itemType=foto and mediaLicense=* and text=katt</query>
+</echo>
+</result>
