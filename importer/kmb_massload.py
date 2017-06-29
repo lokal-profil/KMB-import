@@ -2,9 +2,10 @@
 # -*- coding: utf-8  -*-
 """Get parsed data for whole kmb hitlist and store as json."""
 from __future__ import unicode_literals
-import urllib2
 import time
+from collections import OrderedDict
 from xml.dom.minidom import parse
+
 import pywikibot
 import batchupload.helpers as helpers
 import batchupload.common as common
@@ -12,6 +13,13 @@ import batchupload.common as common
 
 THROTTLE = 0.5
 LOGFILE = 'kmb_massloading.log'
+
+try:
+    # For Python 3.0 and later
+    from urllib.request import urlopen
+except ImportError:
+    # Fall back to Python 2's urllib2
+    import urllib2
 
 
 class BbrTemplate(object):
