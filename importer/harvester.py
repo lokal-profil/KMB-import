@@ -89,6 +89,7 @@ def get_total_hits(records_blob):
 
 
 def extract_id_number(records_blob):
+    """Get ID number from unprocessed xml record."""
     id_tag = records_blob.getElementsByTagName('pres:id')[0]
     return id_tag.firstChild.nodeValue
 

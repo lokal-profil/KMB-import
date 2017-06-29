@@ -41,44 +41,46 @@ class TestParser(unittest.TestCase):
         records = harvester.split_records(records)
         self.assertEqual(len(records), 14)
 
+    def extract_id_number(self):
+        records = harvester.get_records_from_file(self.cat_file)
+        record = harvester.split_records(records)[0]
+        id_no = "16000300028666"
+        self.assertEqual(harvester.extract_id_number(record), id_no)
+
     def test_parse_entry(self):
         records = harvester.get_records_from_file(self.cat_file)
         record = harvester.split_records(records)[0]
         result = {
+            "ID": "16000300035205",
             "bbr": [],
+            "beskrivning": "Nyfiken katt i området Lindalen.",
+            "bildbeteckning": "fd925430",
             "byline": "Bengt A Lundberg",
             "copyright": "RAÄ",
-            "country": "SE",
-            "county": "Skåne",
-            "date": "2000-08-23",
-            "date_from": "2000-08-23",
-            "date_to": "2000-08-23",
-            "description": "Katt på trappan.",
+            "date": "1992-06-01",
+            "dateFrom": "1992-06-01",
+            "dateTo": "1992-06-01",
             "fmis": [],
-            "id_label": "f0009418",
-            "id_no": "16000300028666",
             "item_classes": [
-                "Bondgård",
-                "Byggnadsverk",
-                "Jordbruk"
+                "Förortsmiljö",
+                "Miljöer",
+                "Villastad/villasamhälle"
             ],
-            "item_keywords": [
-                "Byggnadsminnen",
-                "Riksintressen"
-            ],
-            "label": "Kumlatofta",
+            "item_keywords": [],
+            "kommun": "0138",
+            "kommunName": "Tyresö",
+            "lan": "Stockholm",
+            "land": "SE",
+            "landskap": "Södermanland",
             "license": "by",
             "license_text": "{{CC-BY-2.5|Bengt A Lundberg / Riksantikvarieämbetet}}",
-            "motif": "Kumlatofta",
-            "municipality": "1265",
-            "municipality_name": "Sjöbo",
-            "parish": "1215",
-            "parish_name": "Everlöv",
+            "motiv": "Tyresö",
+            "namn": "Tyresö",
             "problem": [],
-            "province": "Skåne",
-            "source": "http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/normal/1.jpg",
-            "thumbnail": "http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/thumbnail/1.jpg",
-            "uri": "http://kulturarvsdata.se/raa/kmb/16000300028666"
+            "socken": "0103",
+            "sockenName": "Tyresö",
+            "source": "http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/normal/1.jpg",
+            "thumbnail": "http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/thumbnail/1.jpg"
         }
         record_dict = {}
         log = common.LogFile('', "test_logfile.log")
