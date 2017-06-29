@@ -3,6 +3,7 @@
 import os
 import unittest
 
+import batchupload.common as common
 import importer.harvester as harvester
 
 
@@ -39,21 +40,6 @@ class TestParser(unittest.TestCase):
         records = harvester.get_records_from_file(self.cat_file)
         records = harvester.split_records(records)
         self.assertEqual(len(records), 14)
-
-    def test_process_byline_unknown(self):
-        byline = "Okänd"
-        result = "{{unknown}}"
-        self.assertEqual(harvester.process_byline(byline), result)
-
-    def test_process_byline_flip(self):
-        byline = "Svensson, Jan A"
-        result = "Jan A Svensson"
-        self.assertEqual(harvester.process_byline(byline), result)
-
-    def test_process_byline_none(self):
-        byline = None
-        result = "{{not provided}}"
-        self.assertEqual(harvester.process_byline(byline), result)
 
     def test_parse_entry(self):
         records = harvester.get_records_from_file(self.cat_file)
@@ -94,7 +80,10 @@ class TestParser(unittest.TestCase):
             "thumbnail": "http://kmb.raa.se/cocoon/bild/raa-image/16000300028666/thumbnail/1.jpg",
             "uri": "http://kulturarvsdata.se/raa/kmb/16000300028666"
         }
-        self.assertEqual(harvester.parse_record(record), result)
+        record_dict = {}
+        log = common.LogFile('', "test_logfile.log")
+        self.assertEqual(harvester.parse_record(
+            record, record_dict, log), result)
 
 
 if __name__ == '__main__':
