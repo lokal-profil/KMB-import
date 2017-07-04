@@ -2,7 +2,6 @@
 # -*- coding: utf-8  -*-
 import os
 import unittest
-from collections import OrderedDict
 
 import batchupload.common as common
 import importer.harvester as harvester
@@ -49,6 +48,7 @@ class TestParser(unittest.TestCase):
         self.assertEqual(harvester.extract_id_number(record), id_no)
 
     def test_parse_entry(self):
+        self.maxDiff = None
         records = harvester.get_records_from_file(self.cat_file)
         record = harvester.split_records(records)[4]
         result = {
