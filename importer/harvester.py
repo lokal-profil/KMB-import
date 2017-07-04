@@ -9,13 +9,12 @@ Requires a settings.json file containing an API key
 and a list of keywords. Generates one json file per
 keywords.
 """
-import urllib.parse
-import urllib.request
+import requests
 from xml.dom.minidom import parseString
 import time
 
 import batchupload.common as common
-from kmb_massload import parser
+from importer.kmb_massload import parser
 
 SETTINGS = "settings.json"
 THROTTLE = 0.5
@@ -42,7 +41,7 @@ def create_url(keyword, hits_limit, start_record, api_key):
     :param start_record: from which item to start
     :param api_key: key to access API
     """
-    keyword = urllib.parse.quote(keyword)
+    keyword = requests.utils.quote(keyword)
     url_base = ("http://kulturarvsdata.se/ksamsok/api?x-api={api_key}"
                 "&method=search&hitsPerPage={hits_limit}"
                 "&startRecord={start_record}"
@@ -68,8 +67,8 @@ def parse_record(dom, record_dict, log):
 
 def get_records_from_url(url):
     """Download xml metadata from url."""
-    with urllib.request.urlopen(url) as response:
-        source = response.read()
+    with requests.get(url) as response:
+        source = response.text
     return parseString(source)
 
 
