@@ -6,7 +6,6 @@ Construct Kulturmiljöbild-image templates and categories for KMB data.
 Transforms the partially processed data from kmb_massload into a
 BatchUploadTools compliant json file.
 """
-from __future__ import unicode_literals
 from collections import OrderedDict
 import os.path
 import requests
@@ -59,7 +58,7 @@ class KMBInfo(MakeBaseInfo):
         :param raw_data: output from load_data()
         """
         d = {}
-        for key, value in raw_data.iteritems():
+        for key, value in raw_data.items():
             item = KMBItem(value, self)
             if item.problem:
                 text = '{0} -- image was skipped because of: {1}'.format(
@@ -169,7 +168,7 @@ class KMBInfo(MakeBaseInfo):
         # look up data on Wikidata
         photographer_props = {'P373': 'commonscat', 'P1472': 'creator'}
         photographers = {}
-        for name, qid in photographer_ids.iteritems():
+        for name, qid in photographer_ids.items():
             photographers[name] = self.load_wd_value(
                 qid, photographer_props, self.photographer_cache)
         return photographers
@@ -186,7 +185,7 @@ class KMBInfo(MakeBaseInfo):
             KMBInfo.build_query('P1260', optional_props=query_props.keys()),
             props=query_props)
 
-        for k, v in data.iteritems():
+        for k, v in data.items():
             if v.get('commonscat'):
                 entry = {'wd': v.get('wd'), 'cat': v.get('commonscat')}
 
@@ -252,11 +251,9 @@ class KMBInfo(MakeBaseInfo):
                 lookup[key] = qid
             else:
                 lookup[key] = {'wd': qid}
-                for prop, label in props.iteritems():
+                for prop, label in props.items():
                     if entry[prop] and not entry[prop].type:
-                        # pywikibot sparql has issues with unicode
-                        # this can be dumped when we switch to PY3
-                        entry[prop] = repr(entry[prop]).decode('utf-8')
+                        entry[prop] = repr(entry[prop])
                     lookup[key][label] = entry[prop]
         return lookup
 
@@ -280,7 +277,7 @@ class KMBInfo(MakeBaseInfo):
         data = {}
         wd_item = pywikibot.ItemPage(self.wikidata, qid)
         wd_item.exists()  # load data
-        for pid, label in props.iteritems():
+        for pid, label in props.items():
             value = None
             claims = wd_item.claims.get(pid)
             if claims:
@@ -307,7 +304,7 @@ class KMBInfo(MakeBaseInfo):
             'http://kulturarvsdata.se/raa/kmb/', kmb_files)
 
         # convert sets to list (to allow for json storage)
-        for k, v in kmb_files.iteritems():
+        for k, v in kmb_files.items():
             kmb_files[k] = list(v)
 
         return kmb_files
@@ -571,7 +568,7 @@ class KMBItem(object):
             if entry not in initial_data:
                 initial_data[entry] = None
 
-        for key, value in initial_data.iteritems():
+        for key, value in initial_data.items():
             setattr(self, key, value)
 
         self.wd = {}  # store for relevant Wikidata identifiers
