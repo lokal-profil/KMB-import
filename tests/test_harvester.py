@@ -52,7 +52,6 @@ class TestParser(unittest.TestCase):
         records = harvester.get_records_from_file(self.cat_file)
         record = harvester.split_records(records)[4]
         result = {
-            "ID": "16000300035205",
             "bbr": [],
             "beskrivning": "Nyfiken katt i området Lindalen.",
             "bildbeteckning": "fd925430",
@@ -77,7 +76,6 @@ class TestParser(unittest.TestCase):
             "license_text": "{{CC-BY-2.5|Bengt A Lundberg / Riksantikvarieämbetet}}",
             "motiv": "Tyresö",
             "namn": "Tyresö",
-            "problem": [],
             "socken": "0103",
             "sockenName": "Tyresö",
             "source": "http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/normal/1.jpg",
