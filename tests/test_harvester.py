@@ -50,7 +50,7 @@ class TestParser(unittest.TestCase):
 
     def test_parse_entry(self):
         records = harvester.get_records_from_file(self.cat_file)
-        record = harvester.split_records(records)[0]
+        record = harvester.split_records(records)[4]
         result = {
             "ID": "16000300035205",
             "bbr": [],
