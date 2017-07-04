@@ -209,7 +209,7 @@ def process_depicted(entry, url):
         'http://kulturarvsdata.se/raa/bbr/': BbrTemplate(idno)
     }
     avbildar = None
-    for pattern, template in mapping.iteritems():
+    for pattern, template in mapping.items():
         if url.startswith(pattern):
             if idno != url[len(pattern):].strip():
                 raise ValueError(
