@@ -83,7 +83,6 @@ class TestParser(unittest.TestCase):
             "source": "http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/normal/1.jpg",
             "thumbnail": "http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/thumbnail/1.jpg"
         }
-        result = OrderedDict(result)
         record_dict = {}
         log = common.LogFile('', "test_logfile.log")
         self.assertEqual(harvester.parse_record(

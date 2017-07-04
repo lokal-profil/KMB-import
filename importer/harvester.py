@@ -12,7 +12,6 @@ keywords.
 import urllib.parse
 import urllib.request
 from xml.dom.minidom import parseString
-from collections import OrderedDict
 import time
 
 import batchupload.common as common
@@ -64,8 +63,7 @@ def split_records(dom):
 
 def parse_record(dom, record_dict, log):
     """Parse and process the xml metadata into a dict."""
-    record_dict = parser(dom, record_dict, log)
-    return OrderedDict(sorted(record_dict.items()))
+    return parser(dom, record_dict, log)
 
 
 def get_records_from_url(url):
