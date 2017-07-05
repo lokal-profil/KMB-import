@@ -580,7 +580,7 @@ class KMBItem(object):
 
     def get_other_versions(self):
         """
-        Build a gallery of Commons files that depict/link to the same KMB img.
+        Build a gallery of Commons files that depict/link to same KMB image.
 
         :return: str
         """

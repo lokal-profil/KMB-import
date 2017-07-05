@@ -1,10 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8  -*-
 """Get parsed data for whole kmb hitlist and store as json."""
-from __future__ import unicode_literals
 import time
-from collections import OrderedDict
-from xml.dom.minidom import parse
+import requests
+from xml.dom.minidom import parseString
 
 import pywikibot
 import batchupload.helpers as helpers
@@ -13,13 +12,6 @@ import batchupload.common as common
 
 THROTTLE = 0.5
 LOGFILE = 'kmb_massloading.log'
-
-try:
-    # For Python 3.0 and later
-    from urllib.request import urlopen
-except ImportError:
-    # Fall back to Python 2's urllib2
-    import urllib2
 
 
 class BbrTemplate(object):
@@ -308,16 +300,14 @@ def kmb_wrapper(idno, log):
     A = {'ID': idno, 'problem': []}
     url = 'http://kulturarvsdata.se/raa/kmb/{0}'.format(idno)
     try:
-        f = urllib2.urlopen(url)
-    except urllib2.HTTPError as e:
+        r = requests(url)
+    except requests.HTTPError as e:
         error_message = '{0}: {1}'.format(e, url)
         A['problem'].append(error_message)
         log.write('{0} -- {1}'.format(idno, error_message))
     else:
-        dom = parse(f)
+        dom = parseString(r.text)
         A = parser(dom, A, log)
-        f.close()
-        del f
 
     return A
 

@@ -10,7 +10,7 @@ and a list of keywords. Generates one json file per
 keywords.
 """
 import requests
-from xml.dom.minidom import parseString
+from xml.dom.minidom import parse, parseString
 import time
 
 import batchupload.common as common
@@ -75,8 +75,7 @@ def get_records_from_url(url):
 def get_records_from_file(filename):
     """Get xml metadata from file, used for testing."""
     with open(filename) as f:
-        data = "".join(line.rstrip() for line in f)
-    return parseString(data)
+        return parse(f)
 
 
 def get_total_hits(records_blob):
