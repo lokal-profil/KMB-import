@@ -1,8 +1,9 @@
-##KMB-import
+## KMB-import
 *KMB-import* is a collection of scripts and tools for the batch upload of images
-from the National Heritage Board's *Kulturmiljöbild*. A list of image ids to
-upload was provided by the organisation and the metadata for these were
-pre-fetched using `kmb_massload.py`.
+from the National Heritage Board's *Kulturmiljöbild*.
+
+As a starting point you may either use a list of image ids fed to
+`kmb_massload.py` or a list of keywords can be used with `harvester.py`.
 
 The code is based heavily on pre-existing code in
 [lokal-profil/RAA-tools](https://github.com/lokal-profil/RAA-tools). 
