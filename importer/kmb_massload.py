@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8  -*-
-"""Get parsed data for whole kmb hitlist and store as json."""
+"""Download and process KMB data for a list of ids and store as json."""
 import time
 import requests
 from xml.dom.minidom import parseString
@@ -12,6 +12,8 @@ import batchupload.common as common
 
 THROTTLE = 0.5
 LOGFILE = 'kmb_massloading.log'
+LIST_FILE = 'kmb_hitlist.json'
+OUTPUT_FILE = 'kmb_data.json'
 
 
 class BbrTemplate(object):
@@ -312,13 +314,15 @@ def kmb_wrapper(idno, log):
     return A
 
 
-def load_list(filename='kmb_hitlist.json'):
+def load_list(filename=None):
     """Load json list."""
+    filename = filename or LIST_FILE
     return common.open_and_read_file(filename, as_json=True)
 
 
-def output_blob(data, filename='kmb_data.json'):
+def output_blob(data, filename=None):
     """Dump data as json blob."""
+    filename = filename or OUTPUT_FILE
     common.open_and_write_file(filename, data, as_json=True)
     pywikibot.output('{0} created'.format(filename))
 
