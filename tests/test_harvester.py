@@ -28,8 +28,14 @@ class TestUrl(unittest.TestCase):
 class TestParser(unittest.TestCase):
 
     def setUp(self):
-        data_dir = os.path.join(os.path.split(__file__)[0], 'data')
+        test_dir = os.path.split(__file__)[0]
+        data_dir = os.path.join(test_dir, 'data')
         self.cat_file = os.path.join(data_dir, "test_katt.xml")
+        self.logfile = os.path.join(test_dir, "test_logfile.log")
+        self.log = common.LogFile(test_dir, "test_logfile.log")
+
+    def tearDown(self):
+        os.remove(self.logfile)
 
     def test_get_total_hits(self):
         records = harvester.get_records_from_file(self.cat_file)
@@ -82,9 +88,9 @@ class TestParser(unittest.TestCase):
             "thumbnail": "http://kmb.raa.se/cocoon/bild/raa-image/16000300035205/thumbnail/1.jpg"
         }
         record_dict = {}
-        log = common.LogFile('', "test_logfile.log")
-        self.assertEqual(harvester.parse_record(
-            record, record_dict, log), result)
+        self.assertEqual(
+            harvester.parse_record(record, record_dict, self.log),
+            result)
 
 
 if __name__ == '__main__':
