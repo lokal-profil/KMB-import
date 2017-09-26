@@ -875,7 +875,8 @@ class KMBItem(object):
         """Produce a linked source statement."""
         template = '{{Riksantikvarieämbetet cooperation project|coh}}'
         txt = ''
-        if self.byline:
+        if self.byline and "{{" not in self.byline:
+            # prevent adding '{{not provided}}', '{{unknown}}'
             txt += '{} / '.format(self.byline)
         txt += 'Kulturmiljöbild, Riksantikvarieämbetet'
         return '[{url} {link_text}]\n{template}'.format(
