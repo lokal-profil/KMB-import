@@ -21,8 +21,8 @@ from batchupload.make_info import MakeBaseInfo
 
 MAPPINGS_DIR = 'mappings'
 BATCH_CAT = 'Media contributed by RAÄ'  # stem for maintenance categories
-BATCH_DATE = '2017-06'  # branch for this particular batch upload
-LOGFILE = 'kmb_processing.log'
+BATCH_DATE = '2017-09'  # branch for this particular batch upload
+LOGFILE = 'kmb_processing_september.log'
 
 
 class KMBInfo(MakeBaseInfo):
@@ -831,7 +831,7 @@ class KMBItem(object):
                     cat = test_cat
             elif self.land in country_map and tag_map[tag].get('base'):
                 test_cat = tag_map[tag].get('base').format(
-                    country_map(self.land))
+                    country_map.get(self.land))
                 if self.kmb_info.category_exists(test_cat, cache):
                     self.needs_place_cat = False
                     cat = test_cat
