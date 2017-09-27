@@ -30,7 +30,9 @@ class KMBInfo(MakeBaseInfo):
 
     def __init__(self, **options):
         """Initialise a make_info object."""
-        super(KMBInfo, self).__init__(BATCH_CAT, BATCH_DATE, **options)
+        batch_date = options.get('batch_label') or BATCH_DATE
+        batch_cat = options.get('base_meta_cat') or BATCH_CAT
+        super(KMBInfo, self).__init__(batch_cat, batch_date, **options)
         self.commons = pywikibot.Site('commons', 'commons')
         self.wikidata = pywikibot.Site('wikidata', 'wikidata')
         self.category_cache = {}  # cache for category_exists()
