@@ -477,6 +477,9 @@ class KMBInfo(MakeBaseInfo):
         if item.needs_place_cat:
             item.make_place_category()
 
+        if not found_commonscat:
+            item.get_exact_cat_from_name(self.category_cache)
+
         return list(item.content_cats)
 
     def generate_meta_cats(self, item, content_cats):
@@ -577,6 +580,35 @@ class KMBItem(object):
         self.kmb_info = kmb_info  # the KBMInfo instance creating this KMBItem
         self.needs_place_cat = True  # if item needs categorisation by place
         self.log = kmb_info.log
+        self.commons = pywikibot.Site('commons', 'commons')
+
+    def get_exact_cat_from_name(self, cache):
+        """
+        Try to find a category with the same name as item.
+
+        Only adds the exact category to the item's categories
+        if at least one of the parents of the exact
+        category is in the item's categories. The parent
+        categories are then removed.
+        """
+        exact_match = False
+        exact_category_from_name = self.kmb_info.category_exists(self.namn, cache)
+        if exact_category_from_name:
+            exact_category_from_name = pywikibot.Page(self.commons, self.namn)
+            parent_cats = exact_category_from_name.categories()
+            for cat in parent_cats:
+                cat_name = cat.title(withNamespace=False)
+                if cat_name in self.content_cats:
+                    exact_match = True
+                    # if its parent(s) is in this item's cat,
+                    # we can assume it's correct
+                    self.content_cats.discard(cat_name)
+
+        if exact_match is True:
+            exact_category_title = exact_category_from_name.title(withNamespace=False)
+            self.content_cats.add(exact_category_title)
+        else:
+            self.meta_cats.add('needing categorisation (no exact match)')
 
     def get_other_versions(self):
         """
