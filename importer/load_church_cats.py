@@ -73,7 +73,7 @@ def add_if_likely_church(church_cat, church_dict):
     name = church_cat.title(withNamespace=False)
     name = name.partition(',')[0]
     if any(name.lower().endswith(end) for end in endings):
-        church_dict[name] = church_cat.title()
+        church_dict[name] = church_cat.title(withNamespace=False)
 
 
 def has_subcats(cat):
