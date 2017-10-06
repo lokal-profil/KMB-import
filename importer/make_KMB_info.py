@@ -6,7 +6,6 @@ Construct Kulturmiljöbild-image templates and categories for KMB data.
 Transforms the partially processed data from kmb_massload into a
 BatchUploadTools compliant json file.
 """
-from __future__ import unicode_literals
 from collections import OrderedDict
 import os.path
 import requests
@@ -22,8 +21,8 @@ from batchupload.make_info import MakeBaseInfo
 
 MAPPINGS_DIR = 'mappings'
 BATCH_CAT = 'Media contributed by RAÄ'  # stem for maintenance categories
-BATCH_DATE = '2017-06'  # branch for this particular batch upload
-LOGFILE = 'kmb_processing.log'
+BATCH_DATE = '2017-09'  # branch for this particular batch upload
+LOGFILE = 'kmb_processing_september.log'
 
 
 class KMBInfo(MakeBaseInfo):
@@ -31,7 +30,9 @@ class KMBInfo(MakeBaseInfo):
 
     def __init__(self, **options):
         """Initialise a make_info object."""
-        super(KMBInfo, self).__init__(BATCH_CAT, BATCH_DATE, **options)
+        batch_date = options.get('batch_label') or BATCH_DATE
+        batch_cat = options.get('base_meta_cat') or BATCH_CAT
+        super(KMBInfo, self).__init__(batch_cat, batch_date, **options)
         self.commons = pywikibot.Site('commons', 'commons')
         self.wikidata = pywikibot.Site('wikidata', 'wikidata')
         self.category_cache = {}  # cache for category_exists()
@@ -59,7 +60,7 @@ class KMBInfo(MakeBaseInfo):
         :param raw_data: output from load_data()
         """
         d = {}
-        for key, value in raw_data.iteritems():
+        for key, value in raw_data.items():
             item = KMBItem(value, self)
             if item.problem:
                 text = '{0} -- image was skipped because of: {1}'.format(
@@ -86,6 +87,7 @@ class KMBInfo(MakeBaseInfo):
         photographer_file = os.path.join(MAPPINGS_DIR, 'photographers.json')
         kmb_files_file = os.path.join(MAPPINGS_DIR, 'kmb_files.json')
         commonscat_file = os.path.join(MAPPINGS_DIR, 'commonscat.json')
+        church_file = os.path.join(MAPPINGS_DIR, 'churches.json')
         photographer_page = 'Institution:Riksantikvarieämbetet/KMB/creators'
 
         if update_mappings:
@@ -134,6 +136,8 @@ class KMBInfo(MakeBaseInfo):
 
         self.mappings['countries'] = common.open_and_read_file(
             countries_file, as_json=True)
+        self.mappings['churches'] = common.open_and_read_file(
+            church_file, as_json=True)
         self.mappings['tags'] = common.open_and_read_file(
             tags_file, as_json=True)
         self.mappings['primary_classes'] = common.open_and_read_file(
@@ -169,7 +173,7 @@ class KMBInfo(MakeBaseInfo):
         # look up data on Wikidata
         photographer_props = {'P373': 'commonscat', 'P1472': 'creator'}
         photographers = {}
-        for name, qid in photographer_ids.iteritems():
+        for name, qid in photographer_ids.items():
             photographers[name] = self.load_wd_value(
                 qid, photographer_props, self.photographer_cache)
         return photographers
@@ -186,7 +190,7 @@ class KMBInfo(MakeBaseInfo):
             KMBInfo.build_query('P1260', optional_props=query_props.keys()),
             props=query_props)
 
-        for k, v in data.iteritems():
+        for k, v in data.items():
             if v.get('commonscat'):
                 entry = {'wd': v.get('wd'), 'cat': v.get('commonscat')}
 
@@ -252,11 +256,9 @@ class KMBInfo(MakeBaseInfo):
                 lookup[key] = qid
             else:
                 lookup[key] = {'wd': qid}
-                for prop, label in props.iteritems():
+                for prop, label in props.items():
                     if entry[prop] and not entry[prop].type:
-                        # pywikibot sparql has issues with unicode
-                        # this can be dumped when we switch to PY3
-                        entry[prop] = repr(entry[prop]).decode('utf-8')
+                        entry[prop] = repr(entry[prop])
                     lookup[key][label] = entry[prop]
         return lookup
 
@@ -280,7 +282,7 @@ class KMBInfo(MakeBaseInfo):
         data = {}
         wd_item = pywikibot.ItemPage(self.wikidata, qid)
         wd_item.exists()  # load data
-        for pid, label in props.iteritems():
+        for pid, label in props.items():
             value = None
             claims = wd_item.claims.get(pid)
             if claims:
@@ -293,8 +295,7 @@ class KMBInfo(MakeBaseInfo):
 
     def get_existing_kmb_files(self):
         """
-        Load all files on commons which contain recognisable external links to
-        specific KMB images.
+        Load Commons files with external links to specific KMB images.
 
         Filenames include the 'File:' prefix.
 
@@ -308,7 +309,7 @@ class KMBInfo(MakeBaseInfo):
             'http://kulturarvsdata.se/raa/kmb/', kmb_files)
 
         # convert sets to list (to allow for json storage)
-        for k, v in kmb_files.iteritems():
+        for k, v in kmb_files.items():
             kmb_files[k] = list(v)
 
         return kmb_files
@@ -481,6 +482,9 @@ class KMBInfo(MakeBaseInfo):
         if item.needs_place_cat:
             item.make_place_category()
 
+        if not found_commonscat:
+            item.get_exact_cat_from_name(self.category_cache)
+
         return list(item.content_cats)
 
     def generate_meta_cats(self, item, content_cats):
@@ -572,7 +576,7 @@ class KMBItem(object):
             if entry not in initial_data:
                 initial_data[entry] = None
 
-        for key, value in initial_data.iteritems():
+        for key, value in initial_data.items():
             setattr(self, key, value)
 
         self.wd = {}  # store for relevant Wikidata identifiers
@@ -581,11 +585,58 @@ class KMBItem(object):
         self.kmb_info = kmb_info  # the KBMInfo instance creating this KMBItem
         self.needs_place_cat = True  # if item needs categorisation by place
         self.log = kmb_info.log
+        self.commons = pywikibot.Site('commons', 'commons')
+
+    def get_exact_match_church(self):
+        """Try to find correct category for church in Sweden."""
+        if self.kommun:
+            muni_cat_name = self.kmb_info.mappings['kommun'][self.kommun]['commonscat']
+            churches_municip = self.kmb_info.mappings["churches"].get(muni_cat_name)
+            if churches_municip and self.namn in churches_municip:
+                exact_category_title = churches_municip[self.namn]
+                self.content_cats.add(exact_category_title)
+                return True
+
+    def get_exact_cat_from_name(self, cache):
+        """
+        Try to find a category with the same name as item.
+
+        Only adds the exact category to the item's categories
+        if at least one of the parents of the exact
+        category is in the item's categories. The parent
+        categories are then removed.
+        """
+        exact_match = False
+
+        # churches are done separately
+        if ("Religionsutövning - kyrkor" in self.item_classes):
+            if self.get_exact_match_church():
+                return
+
+        # Not a church, more generalised guesswork
+        exact_category_from_name = self.kmb_info.category_exists(self.namn,
+                                                                 cache)
+        if exact_category_from_name:
+            exact_category_from_name = pywikibot.Page(self.commons, self.namn)
+            parent_cats = exact_category_from_name.categories()
+            for cat in parent_cats:
+                cat_name = cat.title(withNamespace=False)
+                if cat_name in self.content_cats:
+                    exact_match = True
+                    # if its parent(s) is in this item's cat,
+                    # we can assume it's correct
+                    self.content_cats.discard(cat_name)
+            if exact_match:
+                exact_category_title = exact_category_from_name.title(
+                    withNamespace=False)
+                self.content_cats.add(exact_category_title)
+
+        if not exact_match:
+            self.meta_cats.add('needing categorisation (no exact match)')
 
     def get_other_versions(self):
         """
-        Build a gallery of all images already on Commons which depict
-        (or link to) the same KMB image.
+        Build a gallery of Commons files that depict/link to same KMB image.
 
         :return: str
         """
@@ -609,17 +660,22 @@ class KMBItem(object):
         * self.avbildar is a list of wikitext templates (bbr, fmis, shm) which
             all start with a linebreak.
 
+        If no matches are found then self.namn is returned to ensure field is
+        not entirely empty.
+
         :return: str
         """
-        descr = self.beskrivning or ''
-        wiki_description = '{}.'.format(descr.rstrip(' .'))
-        if (self.motiv != self.namn) and (self.motiv != self.beskrivning):
+        wiki_description = ''
+        if self.beskrivning:
+            wiki_description += '{}.'.format(self.beskrivning.rstrip(' .'))
+        if (self.motiv and (self.motiv != self.namn)
+                and (self.motiv != self.beskrivning)):
             wiki_description += '\n{}. '.format(self.motiv.rstrip(' .'))
 
         if self.avbildar:
             wiki_description += '\n{}'.format(' '.join(self.avbildar))
 
-        return wiki_description.strip()
+        return wiki_description.strip() or self.namn
 
     def get_original_description(self):
         """Get original description incl. motif, keywords and class(es)."""
@@ -836,7 +892,7 @@ class KMBItem(object):
                     cat = test_cat
             elif self.land in country_map and tag_map[tag].get('base'):
                 test_cat = tag_map[tag].get('base').format(
-                    country_map(self.land))
+                    country_map.get(self.land))
                 if self.kmb_info.category_exists(test_cat, cache):
                     self.needs_place_cat = False
                     cat = test_cat
@@ -880,7 +936,8 @@ class KMBItem(object):
         """Produce a linked source statement."""
         template = '{{Riksantikvarieämbetet cooperation project|coh}}'
         txt = ''
-        if self.byline:
+        if self.byline and "{{" not in self.byline:
+            # prevent adding '{{not provided}}', '{{unknown}}'
             txt += '{} / '.format(self.byline)
         txt += 'Kulturmiljöbild, Riksantikvarieämbetet'
         return '[{url} {link_text}]\n{template}'.format(

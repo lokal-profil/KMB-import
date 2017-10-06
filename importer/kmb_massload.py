@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8  -*-
-"""Get parsed data for whole kmb hitlist and store as json."""
-from __future__ import unicode_literals
-import urllib2
+"""Download and process KMB data for a list of ids and store as json."""
 import time
-from xml.dom.minidom import parse
+import requests
+from xml.dom.minidom import parseString
+
 import pywikibot
 import batchupload.helpers as helpers
 import batchupload.common as common
@@ -12,6 +12,8 @@ import batchupload.common as common
 
 THROTTLE = 0.5
 LOGFILE = 'kmb_massloading.log'
+LIST_FILE = 'kmb_hitlist.json'
+OUTPUT_FILE = 'kmb_data.json'
 
 
 class BbrTemplate(object):
@@ -201,7 +203,7 @@ def process_depicted(entry, url):
         'http://kulturarvsdata.se/raa/bbr/': BbrTemplate(idno)
     }
     avbildar = None
-    for pattern, template in mapping.iteritems():
+    for pattern, template in mapping.items():
         if url.startswith(pattern):
             if idno != url[len(pattern):].strip():
                 raise ValueError(
@@ -300,27 +302,27 @@ def kmb_wrapper(idno, log):
     A = {'ID': idno, 'problem': []}
     url = 'http://kulturarvsdata.se/raa/kmb/{0}'.format(idno)
     try:
-        f = urllib2.urlopen(url)
-    except urllib2.HTTPError as e:
+        r = requests(url)
+    except requests.HTTPError as e:
         error_message = '{0}: {1}'.format(e, url)
         A['problem'].append(error_message)
         log.write('{0} -- {1}'.format(idno, error_message))
     else:
-        dom = parse(f)
+        dom = parseString(r.text)
         A = parser(dom, A, log)
-        f.close()
-        del f
 
     return A
 
 
-def load_list(filename='kmb_hitlist.json'):
+def load_list(filename=None):
     """Load json list."""
+    filename = filename or LIST_FILE
     return common.open_and_read_file(filename, as_json=True)
 
 
-def output_blob(data, filename='kmb_data.json'):
+def output_blob(data, filename=None):
     """Dump data as json blob."""
+    filename = filename or OUTPUT_FILE
     common.open_and_write_file(filename, data, as_json=True)
     pywikibot.output('{0} created'.format(filename))
 
